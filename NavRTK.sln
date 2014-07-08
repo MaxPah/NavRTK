@@ -3,8 +3,50 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NavRTK.Core", "NavRTK.Core", "{AA3EB9CE-FABC-4238-8E61-79FD0C5E27F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NavRTK.ModuleGPS", "NavRTK.ModuleGPS", "{E72C519A-8100-45FE-9C6D-E97DB8DF7F2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NavRTK.Shell", "NavRTK.Shell", "{C883A0E0-4222-4AAE-8689-DA3E338C0338}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavRTK.Shell", "Source\NavRTK.Shell\NavRTK.Shell.csproj", "{298B4F18-72F9-4043-8FC9-1B4BD3D5A706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavRTK.ModuleGPS", "Source\NavRTK.ModuleGPS\NavRTK.ModuleGPS.csproj", "{A75EBBA1-E1DC-45E9-A081-5ADDF0FE3BCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavRTK.Infrastructure", "Source\Core\NavRTK.Infrastructure\NavRTK.Infrastructure.csproj", "{C1EF4D35-8BF3-47C3-92F3-6EB246015193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavRTK.Ressources", "Source\Core\NavRTK.Ressources\NavRTK.Ressources.csproj", "{7576EA4B-8EB9-415A-863A-7EEF0C2263CC}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{298B4F18-72F9-4043-8FC9-1B4BD3D5A706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{298B4F18-72F9-4043-8FC9-1B4BD3D5A706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{298B4F18-72F9-4043-8FC9-1B4BD3D5A706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{298B4F18-72F9-4043-8FC9-1B4BD3D5A706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75EBBA1-E1DC-45E9-A081-5ADDF0FE3BCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75EBBA1-E1DC-45E9-A081-5ADDF0FE3BCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75EBBA1-E1DC-45E9-A081-5ADDF0FE3BCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75EBBA1-E1DC-45E9-A081-5ADDF0FE3BCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1EF4D35-8BF3-47C3-92F3-6EB246015193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1EF4D35-8BF3-47C3-92F3-6EB246015193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1EF4D35-8BF3-47C3-92F3-6EB246015193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1EF4D35-8BF3-47C3-92F3-6EB246015193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7576EA4B-8EB9-415A-863A-7EEF0C2263CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7576EA4B-8EB9-415A-863A-7EEF0C2263CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7576EA4B-8EB9-415A-863A-7EEF0C2263CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7576EA4B-8EB9-415A-863A-7EEF0C2263CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{298B4F18-72F9-4043-8FC9-1B4BD3D5A706} = {C883A0E0-4222-4AAE-8689-DA3E338C0338}
+		{A75EBBA1-E1DC-45E9-A081-5ADDF0FE3BCE} = {E72C519A-8100-45FE-9C6D-E97DB8DF7F2F}
+		{C1EF4D35-8BF3-47C3-92F3-6EB246015193} = {AA3EB9CE-FABC-4238-8E61-79FD0C5E27F3}
+		{7576EA4B-8EB9-415A-863A-7EEF0C2263CC} = {AA3EB9CE-FABC-4238-8E61-79FD0C5E27F3}
 	EndGlobalSection
 EndGlobal
