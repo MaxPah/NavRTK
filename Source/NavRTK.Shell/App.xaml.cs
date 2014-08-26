@@ -19,7 +19,7 @@ namespace NavRTK.Shell
             base.OnStartup(e);
 
             // The boostrapper will create the Shell instance, so the App.xaml does not have a StartupUri.
-            NavRTKBootstrapper bootstrapper = new NavRTKBootstrapper();
+            Bootstrapper bootstrapper = new Bootstrapper();
             bootstrapper.Run();
         }
     }

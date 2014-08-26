@@ -1,18 +1,23 @@
-﻿
-using Microsoft.Practices.Prism.MefExtensions;
+﻿using Microsoft.Practices.Prism.MefExtensions;
+using Microsoft.Practices.Prism.Modularity;
+using Microsoft.Practices.Prism.Regions;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
-using System.Composition;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace NavRTK.Shell
 {
-    public class NavRTKBootstrapper : MefBootstrapper
+    public class Bootstrapper : MefBootstrapper
     {        
 
-        protected override System.Windows.DependencyObject CreateShell()
+        protected override DependencyObject CreateShell()
         {
-            
-            return new Shell();
+
+            return this.Container.GetExportedValue<Shell>();
         }
         protected override void InitializeShell()
         {
@@ -24,7 +29,7 @@ namespace NavRTK.Shell
         protected override void ConfigureAggregateCatalog()
         {
             base.ConfigureAggregateCatalog();
-            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(NavRTKBootstrapper).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
         }
 
         protected override void ConfigureContainer()

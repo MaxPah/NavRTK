@@ -1,11 +1,4 @@
 C:\Users\Maxou\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.Shell.exe.config
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\Shell.baml
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\Shell.g.cs
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\App.g.cs
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell_MarkupCompile.cache
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.g.resources
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.Properties.Resources.resources
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csproj.GenerateResource.Cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.Shell.exe.config
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.Shell.exe
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.Shell.pdb
@@ -45,6 +38,14 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Sh
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\Shell.baml
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\App.baml
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\Shell.g.cs
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\App.g.cs
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell_MarkupCompile.cache
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.g.resources
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.Properties.Resources.resources
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csproj.GenerateResource.Cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.exe
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.pdb
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\App.baml
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csprojResolveAssemblyReference.cache

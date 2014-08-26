@@ -1,13 +1,13 @@
-﻿using System.Composition;
+﻿
+using System.ComponentModel.Composition;
 using System.Windows;
 
 namespace NavRTK.Shell
 {
+    [Export]
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-
-    [Export(typeof(Shell))]
     public partial class Shell : Window
     {
         public Shell()
