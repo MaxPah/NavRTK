@@ -35,27 +35,31 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.Prism.Composition">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.Prism.Composition.dll</HintPath>
+      <HintPath>..\..\packages\Prism.Composition.5.0.0\lib\NET45\Microsoft.Practices.Prism.Composition.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Interactivity">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+      <HintPath>..\..\packages\Prism.Interactivity.5.0.0\lib\NET45\Microsoft.Practices.Prism.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Prism.MefExtensions">
+      <HintPath>..\..\packages\Prism.MEFExtensions.5.0.0\lib\NET45\Microsoft.Practices.Prism.MefExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Mvvm">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
+      <HintPath>..\..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.Mvvm.Desktop">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
+      <HintPath>..\..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.Mvvm.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.PubSubEvents">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
+      <HintPath>..\..\packages\Prism.PubSubEvents.1.0.0\lib\portable-sl4+wp7+windows8+net40\Microsoft.Practices.Prism.PubSubEvents.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.Prism.SharedInterfaces">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
+      <HintPath>..\..\packages\Prism.Mvvm.1.0.0\lib\net45\Microsoft.Practices.Prism.SharedInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\Lib\Prism v5.0\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <HintPath>..\..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Composition.AttributedModel">
       <HintPath>..\..\Lib\MEF\System.Composition.AttributedModel.dll</HintPath>
     </Reference>
@@ -97,6 +101,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="NavRTKBootstrapper.cs" />
+    <Compile Include="RegionNames.cs" />
     <Compile Include="Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
       <SubType>Code</SubType>

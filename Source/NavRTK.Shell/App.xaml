@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              >
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="primaryColor" Color="#292929" />
+        <SolidColorBrush x:Key="secondColor" Color="#2672EC" />
+        <SolidColorBrush x:Key="menuBisColor" Color="#919191"/>
+        <SolidColorBrush x:Key="White" Color="#ffffff"/>
+        <SolidColorBrush x:Key="Black" Color="#000000"/>
+        <SolidColorBrush x:Key="Transparent" Color="Transparent"/>
     </Application.Resources>
 </Application>
