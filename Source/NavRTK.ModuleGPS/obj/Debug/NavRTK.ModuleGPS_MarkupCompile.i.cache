@@ -1,20 +1,20 @@
 ﻿NavRTK.ModuleGPS
 
 
-winexe
+library
 C#
 .cs
-C:\Users\Maxou\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.ModuleGPS\obj\Debug\
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.ModuleGPS\obj\Debug\
 NavRTK.ModuleGPS
 none
 false
 DEBUG;TRACE
-C:\Users\Maxou\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.ModuleGPS\App.xaml
-11151548125
 
-9887701860
-12-1401562060
-MainWindow.xaml;
+357547006
 
-False
+23-275959749
+26945968148
+View\DataParsedView.xaml;View\HomeView.xaml;View\Settingsview.xaml;
+
+True
 

@@ -16,7 +16,6 @@ namespace NavRTK.Shell
 
         protected override DependencyObject CreateShell()
         {
-
             return this.Container.GetExportedValue<Shell>();
         }
         protected override void InitializeShell()
@@ -30,11 +29,27 @@ namespace NavRTK.Shell
         {
             base.ConfigureAggregateCatalog();
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(Bootstrapper).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(NavRTK.ModuleGPS.View.HomeView).Assembly));
         }
 
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
+        }
+
+
+
+        protected override IModuleCatalog CreateModuleCatalog()
+        {
+            ModuleCatalog moduleCatalog = new ModuleCatalog();
+
+            // this is the code responsible 
+            // for adding Module1 to the application
+            moduleCatalog.AddModule(new ModuleInfo
+                {   InitializationMode = InitializationMode.WhenAvailable,
+                    ModuleName = "ModuleGPS"    });
+
+            return moduleCatalog;
         }
     }
 }

@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="NavRTK.ModuleGPS.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:regions="http://www.codeplex.com/CompositeWPF"
+             xmlns:converter="clr-namespace:NavRTK.ModuleGPS.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <converter:ColorConverter x:Key="StatusToColorConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid x:Name="RootGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Border  Background="Black">
+               <Grid>
+                    <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="80" Margin="170,10,0,0" VerticalAlignment="Top" Width="150"/>
+                    <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="150"/>
+                </Grid>
+            </Border>
+            <Border  Grid.Row="1" Background="Transparent">
+                <ContentControl prism:RegionManager.RegionName="MainRegion"/>
+            </Border>
+            <Border Grid.Row="2" Background="Black">
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

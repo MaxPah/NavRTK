@@ -49,3 +49,5 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Sh
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.exe
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.pdb
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csprojResolveAssemblyReference.cache
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.ModuleGPS.dll
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.ModuleGPS.pdb
