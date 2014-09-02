@@ -2,17 +2,22 @@
 using Microsoft.Practices.Prism.Modularity;
 using System.ComponentModel.Composition;
 using NavRTK.ModuleGPS.Helper;
+using NavRTK.ModuleGPS.View;
 using System.Windows.Input;
 using System.ComponentModel;
+using System;
 
 namespace NavRTK.ModuleGPS.ViewModel
 {
 
     public class HomeViewModel : INotifyPropertyChanged
     {
+        //RegionManager regionManager;
+
         [ImportingConstructor]
         public HomeViewModel()
         {
+            //regionManager.RequestNavigate("MainRegion","NavRTK.ModuleGPS.View.DataParsedView");
         }
 
         #region COMMANDS
@@ -62,6 +67,7 @@ namespace NavRTK.ModuleGPS.ViewModel
         }
         private void ExecuteSwitchToSettingsView()
         {
+            //regionManager.RequestNavigate("MainRegion", "SettingsView");
             System.Console.WriteLine("SettingsClicked");
             OnPropertyChanged("SwitchToSettingsView");
         }

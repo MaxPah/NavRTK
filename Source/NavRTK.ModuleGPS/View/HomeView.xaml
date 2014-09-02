@@ -15,13 +15,14 @@
         <Grid x:Name="RootGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
-                <RowDefinition Height="80*"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <Border  Background="Black">
+			<Border Grid.Row="0" Background="Black">
                <Grid>
-                    <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="80" Margin="170,10,0,0" VerticalAlignment="Top" Width="150"/>
-                    <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="150"/>
+					<Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,30,10" HorizontalAlignment="Right"/>
+                    <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="29.332" Margin="86,35.334,0,35.334" VerticalAlignment="Center" Width="88" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}"/>
+                    <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="38" Margin="10,0,0,0" VerticalAlignment="Center" Width="76" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}"/>
                 </Grid>
             </Border>
             <Border  Grid.Row="1" Background="Transparent">

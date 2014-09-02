@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Composition;
+﻿using Microsoft.Practices.Prism.Regions;
+using System.ComponentModel.Composition;
 using System.Windows.Controls;
 
 namespace NavRTK.ModuleGPS.View

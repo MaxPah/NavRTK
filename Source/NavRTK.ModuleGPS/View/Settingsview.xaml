@@ -28,6 +28,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="secondColor" Color="#2672EC" />
         <DataTemplate x:Key="DataTemplateListPort">
         <Grid Height="150" Width="Auto">
             <Grid.ColumnDefinitions>
@@ -87,6 +88,7 @@
                         <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Handshake}"  Height="Auto" TextAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="2.154,5,9.846,3.634" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5"/>
                 </Viewbox>
             </StackPanel>
+            <Rectangle Fill="{DynamicResource secondColor}" HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="4.62"/>
         </Grid>
     </DataTemplate>
     <Style x:Key="FocusVisual">
@@ -152,7 +154,6 @@
         </Setter>
     </Style>
         <SolidColorBrush x:Key="primaryColor" Color="#292929" />
-        <SolidColorBrush x:Key="secondColor" Color="#2672EC" />
         <SolidColorBrush x:Key="menuBisColor" Color="#919191"/>
         <SolidColorBrush x:Key="White" Color="#ffffff"/>
         <SolidColorBrush x:Key="Black" Color="#000000"/>
@@ -232,7 +233,7 @@
             </Button>
             <ListBox  VerticalAlignment="Stretch" Background="{StaticResource Transparent}" BorderThickness="0" ItemsSource="{Binding ObjPorts}" SelectedItem="{Binding SelectedPort}" Foreground="{StaticResource White}" ItemTemplate="{DynamicResource DataTemplateListPort}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" Grid.RowSpan="2" />
 
-            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="31,0,0,0" MinHeight="400"/>
+            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" MinHeight="400"/>
             <Button Background="{StaticResource Transparent}" BorderThickness="0"  Grid.Column="3" Command="{Binding Path=OpenPopUp}">
                 <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
                     <Canvas Width="44.237" Height="44.237" Canvas.Left="0" Canvas.Top="0" >
