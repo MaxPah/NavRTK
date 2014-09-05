@@ -38,3 +38,4 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavR
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Ressources\obj\Debug\NavRTK.Ressources.csproj.GenerateResource.Cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Ressources\obj\Debug\NavRTK.Ressources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Ressources\obj\Debug\NavRTK.Ressources.pdb
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Ressources\obj\Debug\NavRTK.Ressources.csprojResolveAssemblyReference.cache

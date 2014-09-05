@@ -54,7 +54,8 @@ namespace NavRTK.ModuleGPS.Model
             string[] split;
            if (t != null)
            {
-
+               if (list.Count() > 10)
+                   list.Dequeue();
                try
                {
                     t = t.Substring(1, t.Length-1);

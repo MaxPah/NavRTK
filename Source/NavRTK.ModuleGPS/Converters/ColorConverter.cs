@@ -8,8 +8,9 @@ namespace NavRTK.ModuleGPS.Converters
     {
         public enum StatusEnum
         {
+            ConnectionOK,
             ConnectionKO,
-            ConnectionOK
+            ConnectionLoading
         }
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -20,6 +21,8 @@ namespace NavRTK.ModuleGPS.Converters
                 return new SolidColorBrush(Colors.Green);
             else if (state == StatusEnum.ConnectionKO.ToString())
                 return new SolidColorBrush(Colors.Red);
+            else if (state == StatusEnum.ConnectionLoading.ToString())
+                return new SolidColorBrush(Colors.Blue);
             else return new SolidColorBrush(Colors.Blue);
 
         }

@@ -36,7 +36,6 @@ namespace NavRTK.ModuleGPS.ViewModel
         private string selectedHandshake;// Used to stock the handshake selected in the popup window
         private ObjectPort selectedObjectPort;// Used to be the ObjectPort selected for recieved data
         private bool isOpen; // Used to determind if the popup "new port" is hidden or not
-        private SolidColorBrush defaultItemColor = new SolidColorBrush(Colors.DeepSkyBlue);
         #endregion FIELDS
 
         #region PROPERTIES
@@ -235,15 +234,6 @@ namespace NavRTK.ModuleGPS.ViewModel
             {
                 objports = value;
                 OnPropertyChanged("ObjPorts");
-            }
-        }
-        public SolidColorBrush DefaultItemColor
-        {
-            get { return defaultItemColor; }
-            set
-            {
-                defaultItemColor = value;
-                OnPropertyChanged("DefaultItemColor");
             }
         }
         #endregion PROPERTIES
@@ -497,7 +487,6 @@ namespace NavRTK.ModuleGPS.ViewModel
         #region RECIEVING
         private void Recieve(object sender, SerialDataReceivedEventArgs e)
         {
-            // Collecting the characters received to our 'buffer' (string).
             try
             {
                 if (sp.IsOpen == true)

@@ -1,7 +1,5 @@
-﻿using Microsoft.Practices.Prism.Regions;
-using NavRTK.ModuleGPS.Helper;
+﻿using NavRTK.ModuleGPS.Helper;
 using NavRTK.ModuleGPS.Model;
-using NavRTK.ModuleGPS.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +13,7 @@ using System.Windows.Threading;
 
 namespace NavRTK.ModuleGPS.ViewModel
 {
-    [Export(typeof(HomeViewModel))]
+    [Export(typeof(DataParsedViewModel))]
     public class DataParsedViewModel : INotifyPropertyChanged
     {
         #region FIELDS
@@ -65,7 +63,16 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("OnOffButton");
             }
         }
-
+        public string ActualStatus
+        {
+            get
+            { return actualStatus; }
+            set
+            {
+                actualStatus = value;
+                OnPropertyChanged("ActualStatus");
+            }
+        }
         /// <summary>
         /// Both
         /// </summary>
@@ -184,16 +191,6 @@ namespace NavRTK.ModuleGPS.ViewModel
             {
                 cap = value;
                 OnPropertyChanged("Cap");
-            }
-        }
-        public string ActualStatus
-        {
-            get
-            { return actualStatus; }
-            set
-            {
-                actualStatus = value;
-                OnPropertyChanged("ActualStatus");
             }
         }
         #endregion GetSet
@@ -509,6 +506,7 @@ namespace NavRTK.ModuleGPS.ViewModel
             }
         }
         #endregion
+        
     }
 
 }

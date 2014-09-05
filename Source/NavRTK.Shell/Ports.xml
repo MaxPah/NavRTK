@@ -10,7 +10,7 @@
   </ObjectPort>
   <ObjectPort Id="1">
     <Name>COM1</Name>
-    <Baudrate>9600</Baudrate>
+    <Baudrate>4800</Baudrate>
     <Databits>8</Databits>
     <Stopbit>One</Stopbit>
     <Parity>None</Parity>
@@ -18,7 +18,7 @@
   </ObjectPort>
   <ObjectPort Id="2">
     <Name>COM1</Name>
-    <Baudrate>4800</Baudrate>
+    <Baudrate>9600</Baudrate>
     <Databits>8</Databits>
     <Stopbit>One</Stopbit>
     <Parity>None</Parity>

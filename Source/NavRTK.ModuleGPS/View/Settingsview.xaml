@@ -187,10 +187,10 @@
                 </StackPanel>
             </Grid>
         </Popup>
-        <Grid Margin="65,25,20,20" Grid.Row="1">
+        <Grid Margin="20,20,20,20" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="75*" MinHeight="75"/>
-                <RowDefinition Height="436*"  MinHeight="200"/>
+                <RowDefinition Height="436*"  MinHeight="100"/>
                 <RowDefinition Height="38*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -236,7 +236,7 @@
             <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" MinHeight="400"/>
             <Button Background="{StaticResource Transparent}" BorderThickness="0"  Grid.Column="3" Command="{Binding Path=OpenPopUp}">
                 <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                    <Canvas Width="44.237" Height="44.237" Canvas.Left="0" Canvas.Top="0" >
+                    <Canvas Width="44.237" Height="44.237" Canvas.Left="0" Canvas.Top="0">
                         <Canvas x:Name="g3">
                             <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path5" Fill="#FFF9F9F9">
                                 <Path.Data>

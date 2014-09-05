@@ -13,7 +13,7 @@ namespace NavRTK.ModuleGPS.View
         public SettingsView()
         {
             InitializeComponent();
-            this.DataContext = new NavRTK.ModuleGPS.ViewModel.SerialSettingsViewModel();
+            //this.DataContext = new NavRTK.ModuleGPS.ViewModel.SerialSettingsViewModel();
         }
     }
 }

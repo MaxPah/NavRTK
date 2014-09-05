@@ -10,25 +10,42 @@
              d:DesignHeight="700" d:DesignWidth="1200">
     <UserControl.Resources>
         <converter:ColorConverter x:Key="StatusToColorConverter"/>
+        <Style  TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="bg" CornerRadius="5,5,5,5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{StaticResource secondColor}" TargetName="bg" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid x:Name="RootGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-			<Border Grid.Row="0" Background="Black">
-               <Grid>
-					<Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,30,10" HorizontalAlignment="Right"/>
-                    <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="29.332" Margin="86,35.334,0,35.334" VerticalAlignment="Center" Width="88" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}"/>
-                    <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="38" Margin="10,0,0,0" VerticalAlignment="Center" Width="76" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}"/>
+            <Border Grid.Row="0" Background="Black">
+                <Grid>
+                    <Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,30,10" HorizontalAlignment="Right"/>
+                    <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="38"  Margin="10,31,0,31" VerticalAlignment="Center" Width="107.5" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}" FontSize="16"/>
+                    <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="38" Margin="140,31,0,31" VerticalAlignment="Center" Width="90" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}" FontSize="16"/>
                 </Grid>
             </Border>
             <Border  Grid.Row="1" Background="Transparent">
                 <ContentControl prism:RegionManager.RegionName="MainRegion"/>
             </Border>
             <Border Grid.Row="2" Background="Black">
+                <TextBlock Text="{Binding ActualStatus}" Foreground="{Binding ActualStatus, Converter={StaticResource StatusToColorConverter}, Mode=Default}" />
             </Border>
         </Grid>
     </Grid>

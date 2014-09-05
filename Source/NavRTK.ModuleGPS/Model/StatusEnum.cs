@@ -9,7 +9,7 @@ namespace NavRTK.ModuleGPS.Model
     public enum StatusEnum
     {
         ConnectionOK,
-        ConnectionKO
-
+        ConnectionKO,
+        ConnectionLoading
     }
 }
