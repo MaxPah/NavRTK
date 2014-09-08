@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Prism.Regions;
+using NavRTK.ModuleGPS.ViewModel;
 using System.ComponentModel.Composition;
 using System.Windows.Controls;
 
@@ -13,7 +14,13 @@ namespace NavRTK.ModuleGPS.View
         public HomeView()
         {
             InitializeComponent();
-            this.DataContext = new NavRTK.ModuleGPS.ViewModel.HomeViewModel();
+        }
+
+        [Import]
+        HomeViewModel viewmodel
+        {
+            get { return this.DataContext as HomeViewModel; }
+            set { this.DataContext = value; }
         }
     }
 }

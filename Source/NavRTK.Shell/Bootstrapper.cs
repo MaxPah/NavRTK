@@ -1,25 +1,22 @@
 ﻿using Microsoft.Practices.Prism.MefExtensions;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition.Hosting;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace NavRTK.Shell
 {
     public class Bootstrapper : MefBootstrapper
-    {        
-
+    {
+        private IRegionManager regionManager;
         protected override DependencyObject CreateShell()
         {
             return this.Container.GetExportedValue<Shell>();
         }
         protected override void InitializeShell()
         {
+            
+            regionManager = this.Container.GetExportedValue<IRegionManager>();
             base.InitializeShell();
             Application.Current.MainWindow = (Shell)this.Shell;
             Application.Current.MainWindow.Show();
@@ -34,20 +31,16 @@ namespace NavRTK.Shell
 
         protected override void ConfigureContainer()
         {
-            base.ConfigureContainer();
+            base.ConfigureContainer();            
         }
-
-
 
         protected override IModuleCatalog CreateModuleCatalog()
         {
             ModuleCatalog moduleCatalog = new ModuleCatalog();
-
             // this is the code responsible 
-            // for adding Module1 to the application
-            moduleCatalog.AddModule(new ModuleInfo
-                {   InitializationMode = InitializationMode.WhenAvailable,
-                    ModuleName = "ModuleGPS"    });
+            // for adding ModuleGPS to the application
+
+            moduleCatalog.AddModule(new ModuleInfo { ModuleName = "ModuleGPS" });
 
             return moduleCatalog;
         }

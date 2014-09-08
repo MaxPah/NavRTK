@@ -10,6 +10,5 @@ namespace NavRTK.ModuleGPS.Model
     {
         ConnectionOK,
         ConnectionKO,
-        ConnectionLoading
     }
 }

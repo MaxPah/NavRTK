@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.Prism.Regions;
 using NavRTK.ModuleGPS.Helper;
 using NavRTK.ModuleGPS.Model;
+using NavRTK.ModuleGPS.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,8 +18,8 @@ namespace NavRTK.ModuleGPS.ViewModel
     [Export(typeof(HomeViewModel))]
     public class HomeViewModel : INotifyPropertyChanged
     {
-        [Import]
-        public IRegionManager regionManager { private get; set; }
+
+        readonly IRegionManager regionManager;
 
         #region FIELDS
         private Queue<string> gpsTrame; // Used to stock ALL trames GPS Message
@@ -140,7 +141,7 @@ namespace NavRTK.ModuleGPS.ViewModel
         {
             get
             {
-                ActualStatus = StatusEnum.ConnectionLoading.ToString();
+                ActualStatus = StatusEnum.ConnectionKO.ToString();
                 OnPropertyChanged("ActualStatus");
                 return onOffButton; }
             set
@@ -589,8 +590,9 @@ namespace NavRTK.ModuleGPS.ViewModel
 
         #region CONSTRUCTOR
         [ImportingConstructor]
-        public HomeViewModel()
+        public HomeViewModel(IRegionManager RegionManager)
         {
+            this.regionManager = RegionManager;
             link = "../../Ports.xml";
             portName = SerialPort.GetPortNames();
             gpsTrame = new Queue<string>();
@@ -635,11 +637,6 @@ namespace NavRTK.ModuleGPS.ViewModel
                     objports = ObjectsPorts.Charger(link);
                 }
                 objports.DefaultSwap(id);
-
-                objports.Sort(delegate(ObjectPort op1, ObjectPort op2)
-                {
-                    return op1.Id.CompareTo(op2.Id);
-                });
 
                 objports.Enregistrer(link);
                 XMLtoSerialPort();
@@ -693,26 +690,20 @@ namespace NavRTK.ModuleGPS.ViewModel
             }
             else
             {
-                if (selectedObjectPort == null)
-                {
-                    initSerialPort(objports);
-                }
-                else
-                {
-                    sp.PortName = selectedObjectPort.Name;
-                    sp.BaudRate = int.Parse(selectedObjectPort.Baudrate);
-                }
+                initSerialPort(objports);
 
                 if (sp != null)
                     if (!sp.IsOpen)
                         sp.Open();
 
                 //Sets button State and Creates function call on data recieved
-                sp.DataReceived += new SerialDataReceivedEventHandler(Recieve);
-
-                onOffButton = "Break";
-                if (!sp.IsOpen)
-                    sp.Open();
+                if (objports.Count > 0 && sp != null)
+                {
+                    sp.DataReceived += new SerialDataReceivedEventHandler(Recieve);
+                    onOffButton = "Break";
+                    if (!sp.IsOpen)
+                        sp.Open();
+                }
             }
             OnPropertyChanged("OnOffButton");
         }
@@ -734,23 +725,22 @@ namespace NavRTK.ModuleGPS.ViewModel
             isOpen = false;
             OnPropertyChanged("IsOpen");
         }
-
         private bool CanSwitchToDataParsedView()
         {
             return true;
-        }
-        private void ExecuteSwitchToDataParsedView()
-        {
-            System.Console.WriteLine("DataClicked");
         }
         private bool CanSwitchToSettingsView()
         {
             return true;
         }
         private void ExecuteSwitchToSettingsView()
-        {           
-            System.Console.WriteLine("SettingsClicked");
+        {
+            regionManager.RequestNavigate("MainRegion", new Uri("SettingsView", UriKind.Relative));
         }
+        private void ExecuteSwitchToDataParsedView()
+        {
+            regionManager.RequestNavigate("MainRegion",new Uri("DataParsedView",UriKind.Relative));
+        }       
         #endregion
 
         #region RECIEVING
@@ -783,7 +773,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("ActualStatus");
             }
 
-            if (gpsTrameParsed != null) 
+            if (gpsTrameParsed != null && Application.Current != null) 
             {
                 if (gpsTrameParsed.Last().GetType() == typeof(MessageGPGGA))
                 {
@@ -829,58 +819,63 @@ namespace NavRTK.ModuleGPS.ViewModel
         /// <param name="objports">list of ObjectPort</param>
         public void initSerialPort(ObjectsPorts objports)
         {
-            foreach (ObjectPort o in objports)
-            {
-                if (o.Id == 0)
+            if (objports == null)
+                return;
+            else
+            { 
+                foreach (ObjectPort o in objports)
                 {
-                    sp = new SerialPort();
-                    sp.PortName = o.Name;
-                    sp.BaudRate = int.Parse(o.Baudrate);
-                    sp.DataBits = int.Parse(o.Databits);
-                    switch (o.Stopbit)
+                    if (o.Id == 0)
                     {
-                        case "One":
-                            sp.StopBits = StopBits.One;
-                            break;
-                        case "Two":
-                            sp.StopBits = StopBits.Two;
-                            break;
-                        case "OnePointFive":
-                            sp.StopBits = StopBits.OnePointFive;
-                            break;
-                        default: sp.StopBits = StopBits.None;
-                            break;
-                    }
-                    switch (o.Parity)
-                    {
-                        case "Even":
-                            sp.Parity = Parity.Even;
-                            break;
-                        case "Mark":
-                            sp.Parity = Parity.Mark;
-                            break;
-                        case "Odd":
-                            sp.Parity = Parity.Odd;
-                            break;
-                        case "Space":
-                            sp.Parity = Parity.Space;
-                            break;
-                        default: sp.Parity = Parity.None;
-                            break;
-                    }
-                    switch (o.Handshake)
-                    {
-                        case "One":
-                            sp.Handshake = Handshake.XOnXOff;
-                            break;
-                        case "Two":
-                            sp.Handshake = Handshake.RequestToSend;
-                            break;
-                        case "OnePointFive":
-                            sp.Handshake = Handshake.RequestToSendXOnXOff;
-                            break;
-                        default: sp.Handshake = Handshake.None;
-                            break;
+                        sp = new SerialPort();
+                        sp.PortName = o.Name;
+                        sp.BaudRate = int.Parse(o.Baudrate);
+                        sp.DataBits = int.Parse(o.Databits);
+                        switch (o.Stopbit)
+                        {
+                            case "One":
+                                sp.StopBits = StopBits.One;
+                                break;
+                            case "Two":
+                                sp.StopBits = StopBits.Two;
+                                break;
+                            case "OnePointFive":
+                                sp.StopBits = StopBits.OnePointFive;
+                                break;
+                            default: sp.StopBits = StopBits.None;
+                                break;
+                        }
+                        switch (o.Parity)
+                        {
+                            case "Even":
+                                sp.Parity = Parity.Even;
+                                break;
+                            case "Mark":
+                                sp.Parity = Parity.Mark;
+                                break;
+                            case "Odd":
+                                sp.Parity = Parity.Odd;
+                                break;
+                            case "Space":
+                                sp.Parity = Parity.Space;
+                                break;
+                            default: sp.Parity = Parity.None;
+                                break;
+                        }
+                        switch (o.Handshake)
+                        {
+                            case "One":
+                                sp.Handshake = Handshake.XOnXOff;
+                                break;
+                            case "Two":
+                                sp.Handshake = Handshake.RequestToSend;
+                                break;
+                            case "OnePointFive":
+                                sp.Handshake = Handshake.RequestToSendXOnXOff;
+                                break;
+                            default: sp.Handshake = Handshake.None;
+                                break;
+                        }
                     }
                 }
             }

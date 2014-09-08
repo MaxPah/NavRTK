@@ -4,13 +4,12 @@ using System.Windows.Media;
 
 namespace NavRTK.ModuleGPS.Converters
 {
-    public class ColorConverter : IValueConverter
+    public class StatusColorConverter : IValueConverter
     {
         public enum StatusEnum
         {
             ConnectionOK,
             ConnectionKO,
-            ConnectionLoading
         }
 
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -19,11 +18,7 @@ namespace NavRTK.ModuleGPS.Converters
 
             if (state == StatusEnum.ConnectionOK.ToString())
                 return new SolidColorBrush(Colors.Green);
-            else if (state == StatusEnum.ConnectionKO.ToString())
-                return new SolidColorBrush(Colors.Red);
-            else if (state == StatusEnum.ConnectionLoading.ToString())
-                return new SolidColorBrush(Colors.Blue);
-            else return new SolidColorBrush(Colors.Blue);
+            else return new SolidColorBrush(Colors.Red);
 
         }
 

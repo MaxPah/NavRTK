@@ -12,6 +12,17 @@
         <SolidColorBrush x:Key="White" Color="#ffffff"/>
         <SolidColorBrush x:Key="Black" Color="#000000"/>
         <SolidColorBrush x:Key="Transparent" Color="Transparent"/>
+        <Style TargetType="{x:Type ToggleButton}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
     <Grid Background="{StaticResource primaryColor}" MinWidth="800" MinHeight="500">

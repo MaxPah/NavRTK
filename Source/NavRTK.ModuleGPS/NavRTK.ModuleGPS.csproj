@@ -93,7 +93,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\ColorConverter.cs" />
+    <Compile Include="Converters\DefaultColorConverter.cs" />
+    <Compile Include="Converters\StatusColorConverter.cs" />
+    <Compile Include="Converters\IdColorConverter.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="Model\GPSParsor.cs" />
     <Compile Include="Model\MessageGPGGA.cs" />
@@ -125,8 +127,8 @@
     <Compile Include="View\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Settingsview.xaml.cs">
-      <DependentUpon>Settingsview.xaml</DependentUpon>
+    <Compile Include="View\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -147,7 +149,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Settingsview.xaml">
+    <Page Include="View\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

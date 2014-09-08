@@ -50,12 +50,7 @@ namespace NavRTK.ModuleGPS.Model
                     o.Id = i;
                 else if (o.Id == i)
                     o.Id = 0;
-
             }
-
-
-            this.OrderBy(x => x.Id);
         }
-
     }
 }

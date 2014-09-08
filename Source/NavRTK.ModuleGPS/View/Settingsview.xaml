@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:NavRTK.ModuleGPS.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
     <UserControl.Resources>
+        <converter:IdColorConverter x:Key="IdColorConverter"/>
+        <converter:DefaultColorConverter x:Key="DefaultColorConverter"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -48,11 +51,11 @@
                     <Label Content="Name : " Margin="0" Foreground="White"/>
                 </Viewbox>
                 <Viewbox>
-                    <TextBlock Background="Transparent"  Text="{Binding Name}"/>
+                    <TextBlock Background="Transparent"  Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
                 </Viewbox>
             </StackPanel>
-            <Viewbox Grid.Row="0" Grid.Column="2">
-                <TextBlock Foreground="White" Background="Transparent" />
+            <Viewbox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <TextBlock Text="Default" Foreground="{Binding Id, Converter={StaticResource DefaultColorConverter},Mode=Default}" Background="Transparent" Margin="10" />
             </Viewbox>
             <StackPanel  Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Height="Auto" VerticalAlignment="Stretch">
                 <Viewbox>
@@ -73,22 +76,22 @@
                         <Label Content="Stopbits : " Margin="0" Width="Auto" Foreground="White"/>
                 </Viewbox>
                 <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Stopbit}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="5.538,5,0.614,3.634" Grid.RowSpan="3"/>
+                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Stopbit}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="5.538,5,0.614,3.634" Grid.RowSpan="3" TextWrapping="WrapWithOverflow"/>
                 </Viewbox>
                 <Viewbox>
                         <Label Content=",Parity : " Margin="0" Width="Auto" Foreground="White"/>
                 </Viewbox>
                 <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Parity}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Margin="7.385,5,0.615,3.634" Grid.RowSpan="3"/>
+                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Parity}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Margin="7.385,5,0.615,3.634" Grid.RowSpan="3" TextWrapping="WrapWithOverflow"/>
                 </Viewbox>
                 <Viewbox>
                         <Label Content=",Handshake :" Margin="0" Width="Auto" Foreground="White"/>
                 </Viewbox>
                 <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Handshake}"  Height="Auto" TextAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="2.154,5,9.846,3.634" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5"/>
+                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Handshake}"  Height="Auto" TextAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="2.154,5,9.846,3.634" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5" TextWrapping="WrapWithOverflow"/>
                 </Viewbox>
             </StackPanel>
-            <Rectangle Fill="{DynamicResource secondColor}" HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="4.62"/>
+            <Rectangle Fill="{Binding Id, Converter={StaticResource IdColorConverter},Mode=Default}" HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="4.62"/>
         </Grid>
     </DataTemplate>
     <Style x:Key="FocusVisual">
@@ -159,8 +162,8 @@
         <SolidColorBrush x:Key="Black" Color="#000000"/>
         <SolidColorBrush x:Key="Transparent" Color="Transparent"/>
     </UserControl.Resources>
-    <Grid Background="#d1151515">
-        <Popup Placement="Center" Width="Auto" Height="Auto" IsOpen="{Binding IsOpen}">
+    <Grid Background="{DynamicResource primaryColor}">
+        <Popup Placement="Center" Width="Auto" Height="Auto" IsOpen="{Binding IsOpen}" OpacityMask="Black">
             <Grid Background="#dd515151" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -199,9 +202,8 @@
                 <ColumnDefinition Width="476*"/>
                 <ColumnDefinition Width="65*" MinWidth="50"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Foreground="{StaticResource White}" Text="Used by Default" HorizontalAlignment="Right" Margin="10" VerticalAlignment="Top"></TextBlock>
-            <Viewbox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" >
-                <TextBlock Foreground="{StaticResource White}" Text="{Binding GpsTrame}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Viewbox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" >
+            	<TextBlock Foreground="{StaticResource White}" Text="{Binding GpsTrame}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Viewbox>
             <!-- Delete item-->
 
@@ -231,9 +233,10 @@
                     </Canvas>
                 </Viewbox>
             </Button>
-            <ListBox  VerticalAlignment="Stretch" Background="{StaticResource Transparent}" BorderThickness="0" ItemsSource="{Binding ObjPorts}" SelectedItem="{Binding SelectedPort}" Foreground="{StaticResource White}" ItemTemplate="{DynamicResource DataTemplateListPort}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" Grid.RowSpan="2" />
 
-            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" MinHeight="400"/>
+            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" MinHeight="500" MinWidth="500" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            	<ListBox  VerticalAlignment="Stretch" Background="{StaticResource Transparent}" BorderThickness="0" ItemsSource="{Binding ObjPorts}" SelectedItem="{Binding SelectedPort}" Foreground="{StaticResource White}" ItemTemplate="{DynamicResource DataTemplateListPort}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}"/>
+            </Viewbox>
             <Button Background="{StaticResource Transparent}" BorderThickness="0"  Grid.Column="3" Command="{Binding Path=OpenPopUp}">
                 <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
                     <Canvas Width="44.237" Height="44.237" Canvas.Left="0" Canvas.Top="0">
@@ -263,7 +266,7 @@
                     </Canvas>
                 </Viewbox>
             </Button>
-            <ToggleButton Margin="0,0,0,10" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}"/>
+            <ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}"/>
         </Grid>
     </Grid>
 </UserControl>

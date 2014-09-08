@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
     <UserControl.Resources>
-        <converter:ColorConverter x:Key="StatusToColorConverter"/>
+        <converter:StatusColorConverter x:Key="StatusToColorConverter"/>
         <Style  TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -32,9 +32,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <Border Grid.Row="0" Background="Black">
+            <Border Grid.Row="0" Background="#FF242424">
                 <Grid>
                     <Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,30,10" HorizontalAlignment="Right"/>
                     <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="38"  Margin="10,31,0,31" VerticalAlignment="Center" Width="107.5" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}" FontSize="16"/>
@@ -44,8 +44,8 @@
             <Border  Grid.Row="1" Background="Transparent">
                 <ContentControl prism:RegionManager.RegionName="MainRegion"/>
             </Border>
-            <Border Grid.Row="2" Background="Black">
-                <TextBlock Text="{Binding ActualStatus}" Foreground="{Binding ActualStatus, Converter={StaticResource StatusToColorConverter}, Mode=Default}" />
+            <Border Grid.Row="2" Background="#FF242424">
+                <TextBlock Text="{Binding ActualStatus}" Foreground="{Binding ActualStatus, Converter={StaticResource StatusToColorConverter}, Mode=Default}" VerticalAlignment="Bottom" Margin="10,0,0,0" />
             </Border>
         </Grid>
     </Grid>

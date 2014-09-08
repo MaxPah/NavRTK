@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfObjectPort xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <ObjectPort Id="0">
+  <ObjectPort Id="1">
     <Name>COM1</Name>
     <Baudrate>115200</Baudrate>
     <Databits>8</Databits>
@@ -8,15 +8,15 @@
     <Parity>None</Parity>
     <Handshake>None</Handshake>
   </ObjectPort>
-  <ObjectPort Id="1">
+  <ObjectPort Id="2">
     <Name>COM1</Name>
-    <Baudrate>4800</Baudrate>
+    <Baudrate>115200</Baudrate>
     <Databits>8</Databits>
     <Stopbit>One</Stopbit>
     <Parity>None</Parity>
-    <Handshake>None</Handshake>
+    <Handshake>RequestToSendXOnXOff</Handshake>
   </ObjectPort>
-  <ObjectPort Id="2">
+  <ObjectPort Id="0">
     <Name>COM1</Name>
     <Baudrate>9600</Baudrate>
     <Databits>8</Databits>

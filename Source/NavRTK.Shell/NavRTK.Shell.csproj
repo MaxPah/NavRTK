@@ -137,13 +137,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Ports.xml" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\NavRTK.ModuleGPS\NavRTK.ModuleGPS.csproj">
       <Project>{a75ebba1-e1dc-45e9-a081-5addf0fe3bce}</Project>
       <Name>NavRTK.ModuleGPS</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Ports.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
