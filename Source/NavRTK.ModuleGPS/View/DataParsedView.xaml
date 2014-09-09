@@ -65,7 +65,7 @@
                     <TextBlock Text="{Binding Position}" Foreground="White"/>
                 </Viewbox>
                 <Viewbox Grid.Column="1" Grid.Row="2" Margin="5,5,0,5">
-                    <ProgressBar Height="27.19" Width="62.667" Minimum="0" Maximum="9" SmallChange="1"  Value="{Binding NSat}" BorderThickness="0" Margin="0,5,0,0" LargeChange="1">
+                    <ProgressBar Height="27.19" Width="62.667" Minimum="0" Maximum="10" Value="{Binding NSat}" BorderThickness="0" Margin="0,5,0,0">
                         <ProgressBar.Style>
                             <Style TargetType="ProgressBar">
                                 <Setter Property="Foreground" Value="#e50000"/>
@@ -190,7 +190,6 @@
                     <TextBlock Foreground="#FFFFFFFF" TextAlignment="Center" Text="Mode :"/>
                 </Viewbox>
             </Grid>
-            <Rectangle Grid.Column="1" Margin="103,36,0,15" Fill="{DynamicResource White}" Opacity="0.405" HorizontalAlignment="Left" Width="1" Grid.Row="2" Grid.RowSpan="2"/>
             <ToggleButton Grid.Row="4" Grid.Column="1" Margin="20,20,20,20" Command="{Binding Path=Stop}" Content="{Binding OnOffButton}" Background="{DynamicResource secondColor}"/>
             <Viewbox Grid.ColumnSpan="3">
                 <TextBlock Text="{Binding Time}" Foreground="#FFFFFFFF" TextAlignment="Center"/>

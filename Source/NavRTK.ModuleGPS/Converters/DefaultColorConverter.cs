@@ -11,8 +11,8 @@ namespace NavRTK.ModuleGPS.Converters
             string state = value.ToString();
 
             if (state == "0")
-                return new SolidColorBrush(Colors.White); //White
-            else return new SolidColorBrush(Colors.Transparent); //#2672EC = secondColor
+                return "Default";
+            else return "";
 
         }
 

@@ -34,8 +34,8 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavR
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\obj\Debug\NavRTK.Infrastructure.csprojResolveAssemblyReference.cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\obj\Debug\NavRTK.Infrastructure.Properties.Resources.resources
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\obj\Debug\NavRTK.Infrastructure.csproj.GenerateResource.Cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\obj\Debug\NavRTK.Infrastructure.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\obj\Debug\NavRTK.Infrastructure.pdb
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\Core\NavRTK.Infrastructure\obj\Debug\NavRTK.Infrastructure.csprojResolveAssemblyReference.cache

@@ -10,12 +10,14 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Sh
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\Microsoft.Practices.Prism.PubSubEvents.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\Microsoft.Practices.Prism.SharedInterfaces.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.ModuleGPS.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\System.Composition.AttributedModel.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\System.Composition.Convention.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\System.Composition.Hosting.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\System.Composition.Runtime.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\System.Composition.TypedParts.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.ModuleGPS.pdb
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\Microsoft.Practices.Prism.Composition.xml
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\Microsoft.Practices.Prism.Interactivity.xml
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\Microsoft.Practices.Prism.MefExtensions.xml
@@ -38,6 +40,7 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Sh
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csprojResolveAssemblyReference.cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\Shell.baml
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\App.baml
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\Shell.g.cs
@@ -48,6 +51,3 @@ C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Sh
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csproj.GenerateResource.Cache
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.exe
 C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.pdb
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\obj\Debug\NavRTK.Shell.csprojResolveAssemblyReference.cache
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.ModuleGPS.dll
-C:\Users\RNAV_user\Documents\Visual Studio 2013\Projects\NavRTK\Source\NavRTK.Shell\bin\Debug\NavRTK.ModuleGPS.pdb

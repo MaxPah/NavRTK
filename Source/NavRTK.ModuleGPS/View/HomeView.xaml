@@ -36,7 +36,7 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" Background="#FF242424">
                 <Grid>
-                    <Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,30,10" HorizontalAlignment="Right"/>
+                    <Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,100,10" HorizontalAlignment="Right"/>
                     <Button Command="{Binding SwitchToSettingsView}" Content="GPS Settings" HorizontalAlignment="Left" Height="38"  Margin="10,31,0,31" VerticalAlignment="Center" Width="107.5" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}" FontSize="16"/>
                     <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="38" Margin="140,31,0,31" VerticalAlignment="Center" Width="90" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}" FontSize="16"/>
                 </Grid>

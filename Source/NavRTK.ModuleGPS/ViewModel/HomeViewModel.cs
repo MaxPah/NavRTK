@@ -753,6 +753,7 @@ namespace NavRTK.ModuleGPS.ViewModel
             {
                 if (sp.IsOpen == true)
                     recieved_data = sp.ReadLine();
+                else Console.WriteLine("sp not open");
             }
             catch (Exception exp)
             {
@@ -773,7 +774,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("ActualStatus");
             }
 
-            if (gpsTrameParsed != null && Application.Current != null) 
+            if (gpsTrameParsed != null && Application.Current != null && gpsTrameParsed.Count > 0) 
             {
                 if (gpsTrameParsed.Last().GetType() == typeof(MessageGPGGA))
                 {

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:NavRTK.ModuleGPS.Converters"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="1200">
+             d:DesignHeight="1024" d:DesignWidth="1280">
     <UserControl.Resources>
         <converter:IdColorConverter x:Key="IdColorConverter"/>
         <converter:DefaultColorConverter x:Key="DefaultColorConverter"/>
@@ -33,136 +33,150 @@
         </Style>
         <SolidColorBrush x:Key="secondColor" Color="#2672EC" />
         <DataTemplate x:Key="DataTemplateListPort">
-        <Grid Height="150" Width="Auto">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="35"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="0*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.ColumnSpan="2" Grid.Column="1" HorizontalAlignment="Stretch" Height="Auto" Grid.RowSpan="1" VerticalAlignment="Stretch" Width="Auto" Orientation="Horizontal">
-                <Viewbox>
-                    <Label Content="Name : " Margin="0" Foreground="White"/>
-                </Viewbox>
-                <Viewbox>
-                    <TextBlock Background="Transparent"  Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
-                </Viewbox>
-            </StackPanel>
-            <Viewbox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top">
-                    <TextBlock Text="Default" Foreground="{Binding Id, Converter={StaticResource DefaultColorConverter},Mode=Default}" Background="Transparent" Margin="10" />
-            </Viewbox>
-            <StackPanel  Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Height="Auto" VerticalAlignment="Stretch">
-                <Viewbox>
-                    <Label Content="Bauds :" Margin="0" Width="Auto" Foreground="White"/>
-                </Viewbox>
-                <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Baudrate}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.RowSpan="3" Grid.Row="0" Grid.ColumnSpan="1" Margin="0.923,5,5.231,3.634"/>
-                </Viewbox>
-                <Viewbox>
-                        <Label Content=",Databits : " Margin="0" Width="Auto" Foreground="White" />
-                </Viewbox>
-                <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent" Text="{Binding Databits}" Height="Auto" TextAlignment="Center" Grid.Column="0" Grid.RowSpan="3" Grid.Row="0" Margin="2.769,5,2.462,3.634"/>
-                </Viewbox>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Height="Auto" Grid.ColumnSpan="2">
-                <Viewbox>
-                        <Label Content="Stopbits : " Margin="0" Width="Auto" Foreground="White"/>
-                </Viewbox>
-                <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Stopbit}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Margin="5.538,5,0.614,3.634" Grid.RowSpan="3" TextWrapping="WrapWithOverflow"/>
-                </Viewbox>
-                <Viewbox>
-                        <Label Content=",Parity : " Margin="0" Width="Auto" Foreground="White"/>
-                </Viewbox>
-                <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Parity}"  Height="Auto" Width="Auto" TextAlignment="Center" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Margin="7.385,5,0.615,3.634" Grid.RowSpan="3" TextWrapping="WrapWithOverflow"/>
-                </Viewbox>
-                <Viewbox>
-                        <Label Content=",Handshake :" Margin="0" Width="Auto" Foreground="White"/>
-                </Viewbox>
-                <Viewbox>
-                        <TextBlock Foreground="White" Background="Transparent"  Text="{Binding Handshake}"  Height="Auto" TextAlignment="Center" Grid.Column="1" Grid.Row="0" Margin="2.154,5,9.846,3.634" Grid.RowSpan="3" RenderTransformOrigin="0.5,0.5" TextWrapping="WrapWithOverflow"/>
-                </Viewbox>
-            </StackPanel>
-            <Rectangle Fill="{Binding Id, Converter={StaticResource IdColorConverter},Mode=Default}" HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" Grid.RowSpan="3" VerticalAlignment="Top" Width="4.62"/>
-        </Grid>
-    </DataTemplate>
-    <Style x:Key="FocusVisual">
-        <Setter Property="Control.Template">
-            <Setter.Value>
-                <ControlTemplate>
-                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
-    <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
-    <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
-    <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
-    <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
-    <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
-    <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
-        <Setter Property="SnapsToDevicePixels" Value="True"/>
-        <Setter Property="Padding" Value="4,1"/>
-        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                    <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" MinHeight="150"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="False"/>
-                                <Condition Property="IsSelected" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="Selector.IsSelectionActive" Value="True"/>
-                                <Condition Property="IsSelected" Value="True"/>
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
-                        </MultiTrigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+			<Grid Background="Transparent">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.4*"/>
+                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="0.3*"/>
+                </Grid.RowDefinitions>
+				<Grid Grid.Column="1" Grid.Row="0">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.33*"/>
+						<ColumnDefinition Width="0.33*"/>
+						<ColumnDefinition Width="0.33*"/>
+					</Grid.ColumnDefinitions>
+					<Viewbox Grid.Column="0">
+						<TextBlock Foreground="White" Text="Name : " Width="96.87"/>
+					</Viewbox>
+					<Viewbox Grid.Column="1">
+						<TextBlock Foreground="White" Text="{Binding Name}"/>
+					</Viewbox>
+					<TextBlock Grid.Column="3" Foreground="White" HorizontalAlignment="Right" Text="{Binding Id, Converter={StaticResource DefaultColorConverter},Mode=Default}" Margin="0,4,8,0"/>
+				</Grid>
+				<Grid Grid.Column="1" Grid.Row="1">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="0.25*"/>
+						<ColumnDefinition Width="0.25*"/>
+						<ColumnDefinition Width="0.25*"/>
+						<ColumnDefinition Width="0.25*"/>
+					</Grid.ColumnDefinitions>
+					<Viewbox Grid.Column="0">
+						<TextBlock Foreground="White" Text="Bauds :"/>
+					</Viewbox>
+					<Viewbox Grid.Column="1">
+						<TextBlock Foreground="White" Text="{Binding Baudrate}"/>
+					</Viewbox>
+					<Viewbox Grid.Column="2" >
+						<TextBlock Foreground="White" Text=",Databits : "/>
+					</Viewbox>
+					<Viewbox Grid.Column="3">
+						<TextBlock Foreground="White" Text="{Binding Databits}"/>
+					</Viewbox>
+				</Grid>	
+					<Grid Grid.Column="1" Grid.Row="2" >
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="0.1*"/>
+							<ColumnDefinition Width="0.1*"/>
+							<ColumnDefinition Width="0.1*"/>
+							<ColumnDefinition Width="0.1*"/>
+							<ColumnDefinition Width="0.1*"/>
+							<ColumnDefinition Width="0.1*"/>
+						</Grid.ColumnDefinitions>
+						<Viewbox Grid.Column="0">
+							<TextBlock Foreground="White" Text="Stopbits : "/>
+						</Viewbox>
+						<Viewbox Grid.Column="1">
+							<TextBlock Foreground="White" Text="{Binding Stopbit}"/>
+						</Viewbox>
+						<Viewbox Grid.Column="2">
+							<TextBlock Foreground="White" Text=",Parity : "/>
+						</Viewbox>
+						<Viewbox Grid.Column="3" >
+							<TextBlock Foreground="White" Text="{Binding Parity}"/>
+						</Viewbox>
+						<Viewbox Grid.Column="4" >
+							<TextBlock Foreground="White" Text=",Handshake :" />
+						</Viewbox>
+						<Viewbox Grid.Column="5">
+							<TextBlock Foreground="White" Text="{Binding Handshake}"/>
+						</Viewbox>
+					</Grid>
+                <Rectangle Fill="{Binding Id, Converter={StaticResource IdColorConverter},Mode=Default}" HorizontalAlignment="Center" Margin="15.5,4" Grid.RowSpan="3" VerticalAlignment="Stretch" Width="4" StrokeThickness="0"/>
+            </Grid>
+        </DataTemplate>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
+        <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
+        <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
+        <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
+        <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
+        <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
+        <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Padding" Value="4,1"/>
+            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" MinHeight="128"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Selector.IsSelectionActive" Value="False"/>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="Selector.IsSelectionActive" Value="True"/>
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <SolidColorBrush x:Key="primaryColor" Color="#292929" />
         <SolidColorBrush x:Key="menuBisColor" Color="#919191"/>
         <SolidColorBrush x:Key="White" Color="#ffffff"/>
         <SolidColorBrush x:Key="Black" Color="#000000"/>
         <SolidColorBrush x:Key="Transparent" Color="Transparent"/>
     </UserControl.Resources>
-    <Grid Background="{DynamicResource primaryColor}">
+     <Grid Background="{DynamicResource primaryColor}">
         <Popup Placement="Center" Width="Auto" Height="Auto" IsOpen="{Binding IsOpen}" OpacityMask="Black">
             <Grid Background="#dd515151" >
                 <Grid.ColumnDefinitions>
@@ -197,76 +211,32 @@
                 <RowDefinition Height="38*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="589*"/>
-                <ColumnDefinition Width="30*"/>
-                <ColumnDefinition Width="476*"/>
-                <ColumnDefinition Width="65*" MinWidth="50"/>
+                <ColumnDefinition Width="0.45*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="0.45*"/>
+                <ColumnDefinition Width="0.04*" MinWidth="50"/>
             </Grid.ColumnDefinitions>
             <Viewbox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" >
             	<TextBlock Foreground="{StaticResource White}" Text="{Binding GpsTrame}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </Viewbox>
             <!-- Delete item-->
-
-            <Button Grid.Column="0" Grid.Row="2" Width="30.875" HorizontalAlignment="Left" Command="{Binding Path=ListBoxDeleteItem}" Background="{DynamicResource Transparent}" >
+            <Button Margin="20,0,0,0" Grid.Column="0" Grid.Row="2" Width="60" HorizontalAlignment="Left" Command="{Binding Path=ListBoxDeleteItem}" Background="{DynamicResource Transparent}" >
+                <Viewbox Height="35.871" Width="60">
+                    <Path Stretch="Uniform" UseLayoutRounding="False" Fill="{StaticResource White}" Data="F1 M 85.9033,59.998L 66.1689,40.2646L 66.1689,95.9873L 6.16895,95.9873L 6.16895,35.9873L 61.8916,35.9873L 56.0391,30.1338L 34.707,8.80176L 38.9727,4.53516L 60.3057,25.8672L 64.5713,21.6006L 73.1025,30.1338L 68.8379,34.3994L 90.1699,55.7314L 85.9033,59.998 Z M 60.167,89.9893L 60.167,41.9893L 48.167,41.9893L 48.167,89.9893L 60.167,89.9893 Z M 42.167,89.9893L 42.167,41.9893L 30.167,41.9893L 30.167,89.9893L 42.167,89.9893 Z M 24.167,89.9893L 24.167,41.9893L 12.167,41.9893L 12.167,89.9893L 24.167,89.9893 Z M 7.20605,14.2881C 4.0918,11.8008 0,12.0664 0,12.0664L 0,0C 0,0 5.49609,0.59082 12.0664,6.0332C 15.5547,8.9209 20.7295,15.6221 20.9824,15.9502L 25.9014,11.0303L 30.1689,32.3623L 8.83691,28.0957L 15.0684,21.8643C 14.3906,21.0879 11.0869,17.3838 7.20605,14.2881 Z "/>
+				</Viewbox>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="2" Margin="100,0,0,0" Width="58.667" HorizontalAlignment="Left" Command="{Binding Path=ListBoxDefaultItem}" Background="{DynamicResource Transparent}">
+                <Viewbox Height="43.109">
+					<Path Stretch="Uniform" Fill="{StaticResource White}" Data="F1 M 90.2096,1.52588e-005L 108,17.7904L 108,40L 97.3333,40L 97.3333,22.2096L 85.7904,10.6667L 77.3333,10.6667L 77.3333,50.6667L 26.6667,50.6667L 26.6667,10.6667L 10.6667,10.6667L 10.6667,97.3333L 56.9479,97.3333L 66.5827,108L 0,108L 0,1.52588e-005L 90.2096,1.52588e-005 Z M 68,40L 68,10.6667L 57.3333,10.6667L 57.3333,40L 68,40 Z M 108,81.3334L 133.333,81.3334L 96,122.667L 58.6666,81.3334L 84,81.3334L 84,50.6667L 108,50.6667L 108,81.3334 Z " Height="157.326"/>
+                </Viewbox>
+            </Button>
+            <ListBox Background="{StaticResource Transparent}" BorderThickness="0" ItemsSource="{Binding ObjPorts}" SelectedItem="{Binding SelectedPort}" Foreground="{StaticResource White}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}" ItemTemplate="{DynamicResource DataTemplateListPort}" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+            <Button Background="{StaticResource Transparent}" BorderThickness="0"  Grid.Column="3" Command="{Binding Path=OpenPopUp}" Height="55" VerticalAlignment="Top">
                 <Viewbox>
-                    <Path Fill="{StaticResource White}" Data="M18 28c0.552 0 1-0.448 1-1V15c0-0.552-0.448-1-1-1c-0.552 0-1 0.448-1 1    v12C17 27.552 17.448 28 18 28z M24 4h-6V2c0-1.105-0.895-2-2-2h-6C8.895 0 8 0.895 8 2v2H2C0.895 4 0 4.895 0 6v2    c0 1.104 0.895 2 2 2v18c0 2.209 1.791 4 4 4h14c2.209 0 4-1.791 4-4V10c1.105 0 2-0.896 2-2V6C26 4.895 25.105 4 24 4z M10 3    c0-0.552 0.448-1 1-1h4c0.552 0 1 0.448 1 1v1c-0.969 0-6 0-6 0V3z M22 28c0 1.104-0.895 2-2 2H6c-1.105 0-2-0.896-2-2V10h18V28z     M23 8H3C2.448 8 2 7.552 2 7c0-0.552 0.448-1 1-1h20c0.552 0 1 0.448 1 1C24 7.552 23.552 8 23 8z M8 28c0.552 0 1-0.448 1-1V15    c0-0.552-0.448-1-1-1c-0.552 0-1 0.448-1 1v12C7 27.552 7.448 28 8 28z M13 28c0.552 0 1-0.448 1-1V15c0-0.552-0.448-1-1-1    c-0.552 0-1 0.448-1 1v12C12 27.552 12.448 28 13 28z" HorizontalAlignment="Left"/>
+                    <Path Fill="{StaticResource White}" Margin="2" Stretch="Uniform" Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z "/>
                 </Viewbox>
             </Button>
-            <Button Grid.Column="0" Grid.Row="2" Margin="70,0,0,0" Width="38" HorizontalAlignment="Left" Command="{Binding Path=ListBoxDefaultItem}" Background="{DynamicResource Transparent}">
-
-                <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                    <Canvas Width="26" Height="32" Canvas.Left="0" Canvas.Top="0">
-                        <Canvas>
-                            <Canvas.RenderTransform>
-                                <MatrixTransform Matrix="0.87592138 0 0 1 2.004914 0.07862408"/>
-                            </Canvas.RenderTransform>
-                            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Name="path3007" Fill="#FFF9F9F9" Height="30" Stretch="Fill" Canvas.Top="2" Width="26">
-                                <Path.Data>
-                                    <PathGeometry Figures="M 26 0 H 24 V 13 H 8 V 0 H 0 V 32 H 32 V 6 L 26 0 z m 2 30 H 4 V 16 h 24 v 14 z" FillRule="NonZero"/>
-                                </Path.Data>
-                            </Path>
-                            <Rectangle Canvas.Left="2.875" Canvas.Top="19" Width="20" Height="2" Fill="#FFF9F9F9"/>
-                            <Rectangle Canvas.Left="3" Canvas.Top="22.5" Width="20" Height="2" Fill="#FFF9F9F9"/>
-                            <Rectangle Canvas.Left="3" Canvas.Top="26" Width="20" Height="2" Fill="#FFF9F9F9"/>
-                            <Rectangle Canvas.Left="13.433" Canvas.Top="2" Width="4" Height="9" Fill="#FFF9F9F9"/>
-                        </Canvas>
-                    </Canvas>
-                </Viewbox>
-            </Button>
-
-            <Viewbox Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" MinHeight="500" MinWidth="500" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            	<ListBox  VerticalAlignment="Stretch" Background="{StaticResource Transparent}" BorderThickness="0" ItemsSource="{Binding ObjPorts}" SelectedItem="{Binding SelectedPort}" Foreground="{StaticResource White}" ItemTemplate="{DynamicResource DataTemplateListPort}" ItemContainerStyle="{DynamicResource ListBoxItemStyle1}"/>
-            </Viewbox>
-            <Button Background="{StaticResource Transparent}" BorderThickness="0"  Grid.Column="3" Command="{Binding Path=OpenPopUp}">
-                <Viewbox xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Stretch="Uniform">
-                    <Canvas Width="44.237" Height="44.237" Canvas.Left="0" Canvas.Top="0">
-                        <Canvas x:Name="g3">
-                            <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path5" Fill="#FFF9F9F9">
-                                <Path.Data>
-                                    <PathGeometry Figures="M22.119 44.237C9.922 44.237 0 34.315 0 22.119S9.922 0 22.119 0s22.119 9.922 22.119 22.119S34.315 44.237 22.119 44.237z    M22.119 1.5C10.75 1.5 1.5 10.75 1.5 22.119s9.25 20.619 20.619 20.619s20.619-9.25 20.619-20.619S33.488 1.5 22.119 1.5z" FillRule="NonZero"/>
-                                </Path.Data>
-                            </Path>
-                            <Canvas x:Name="g7">
-                                <Line xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" X1="12.805" Y1="22.118" X2="31.433" Y2="22.118" x:Name="line9" Fill="#FFF9F9F9"/>
-                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path11" Fill="#FFF9F9F9">
-                                    <Path.Data>
-                                        <PathGeometry Figures="M31.433 22.868H12.805c-0.414 0-0.75-0.336-0.75-0.75s0.336-0.75 0.75-0.75h18.628c0.414 0 0.75 0.336 0.75 0.75    S31.847 22.868 31.433 22.868z" FillRule="NonZero"/>
-                                    </Path.Data>
-                                </Path>
-                            </Canvas>
-                            <Canvas x:Name="g13">
-                                <Line xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" X1="22.119" Y1="12.805" X2="22.119" Y2="31.432" x:Name="line15" Fill="#FFF9F9F9"/>
-                                <Path xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" x:Name="path17" Fill="#FFF9F9F9">
-                                    <Path.Data>
-                                        <PathGeometry Figures="M22.119 32.182c-0.414 0-0.75-0.336-0.75-0.75V12.805c0-0.414 0.336-0.75 0.75-0.75s0.75 0.336 0.75 0.75v18.627    C22.869 31.846 22.533 32.182 22.119 32.182z" FillRule="NonZero"/>
-                                    </Path.Data>
-                                </Path>
-                            </Canvas>
-                        </Canvas>
-                    </Canvas>
-                </Viewbox>
-            </Button>
-            <ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}"/>
+			<ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="#FFECECEC"/>
         </Grid>
     </Grid>
 </UserControl>

@@ -14,5 +14,12 @@ namespace NavRTK.Shell
         {
             this.InitializeComponent();
         }
+		
+		[Import]
+        ShellViewModel viewmodel
+        {
+            get { return this.DataContext as ShellViewModel; }
+            set { this.DataContext = value; }
+        }
     }
 }
