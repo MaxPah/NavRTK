@@ -8,7 +8,8 @@
              d:DesignHeight="1024" d:DesignWidth="1280">
     <UserControl.Resources>
         <converter:IdColorConverter x:Key="IdColorConverter"/>
-        <converter:DefaultColorConverter x:Key="DefaultColorConverter"/>
+        <converter:DefaultConverter x:Key="DefaultConverter"/>
+        <converter:NamePortColorConverter x:Key="NamePortColorConverter"/>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -16,6 +17,11 @@
                         <Border Background="{TemplateBinding Background}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Width"  Value="40"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -35,84 +41,83 @@
         <DataTemplate x:Key="DataTemplateListPort">
 			<Grid Background="Transparent">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="35"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="2*" MinWidth="35"/>
+                    <ColumnDefinition Width="*" MinWidth="35"/>
+                    <ColumnDefinition Width="*" MinWidth="35"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.4*"/>
-                    <RowDefinition Height="0.3*"/>
-                    <RowDefinition Height="0.3*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="8*" MinHeight="5"/>
+                    <RowDefinition Height="8*" MinHeight="5"/>
+                    <RowDefinition Height="8*" MinHeight="5"/>
+                    <RowDefinition Height="8*" MinHeight="5"/>
                 </Grid.RowDefinitions>
-				<Grid Grid.Column="1" Grid.Row="0">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="0.33*"/>
-						<ColumnDefinition Width="0.33*"/>
-						<ColumnDefinition Width="0.33*"/>
-					</Grid.ColumnDefinitions>
-					<Viewbox Grid.Column="0">
-						<TextBlock Foreground="White" Text="Name : " Width="96.87"/>
-					</Viewbox>
-					<Viewbox Grid.Column="1">
-						<TextBlock Foreground="White" Text="{Binding Name}"/>
-					</Viewbox>
-					<TextBlock Grid.Column="3" Foreground="White" HorizontalAlignment="Right" Text="{Binding Id, Converter={StaticResource DefaultColorConverter},Mode=Default}" Margin="0,4,8,0"/>
-				</Grid>
-				<Grid Grid.Column="1" Grid.Row="1">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="0.25*"/>
-						<ColumnDefinition Width="0.25*"/>
-						<ColumnDefinition Width="0.25*"/>
-						<ColumnDefinition Width="0.25*"/>
-					</Grid.ColumnDefinitions>
-					<Viewbox Grid.Column="0">
-						<TextBlock Foreground="White" Text="Bauds :"/>
-					</Viewbox>
-					<Viewbox Grid.Column="1">
-						<TextBlock Foreground="White" Text="{Binding Baudrate}"/>
-					</Viewbox>
-					<Viewbox Grid.Column="2" >
-						<TextBlock Foreground="White" Text=",Databits : "/>
-					</Viewbox>
-					<Viewbox Grid.Column="3">
-						<TextBlock Foreground="White" Text="{Binding Databits}"/>
-					</Viewbox>
-				</Grid>	
-					<Grid Grid.Column="1" Grid.Row="2" >
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="0.1*"/>
-							<ColumnDefinition Width="0.1*"/>
-							<ColumnDefinition Width="0.1*"/>
-							<ColumnDefinition Width="0.1*"/>
-							<ColumnDefinition Width="0.1*"/>
-							<ColumnDefinition Width="0.1*"/>
-						</Grid.ColumnDefinitions>
-						<Viewbox Grid.Column="0">
-							<TextBlock Foreground="White" Text="Stopbits : "/>
-						</Viewbox>
-						<Viewbox Grid.Column="1">
-							<TextBlock Foreground="White" Text="{Binding Stopbit}"/>
-						</Viewbox>
-						<Viewbox Grid.Column="2">
-							<TextBlock Foreground="White" Text=",Parity : "/>
-						</Viewbox>
-						<Viewbox Grid.Column="3" >
-							<TextBlock Foreground="White" Text="{Binding Parity}"/>
-						</Viewbox>
-						<Viewbox Grid.Column="4" >
-							<TextBlock Foreground="White" Text=",Handshake :" />
-						</Viewbox>
-						<Viewbox Grid.Column="5">
-							<TextBlock Foreground="White" Text="{Binding Handshake}"/>
-						</Viewbox>
-					</Grid>
-                <Rectangle Fill="{Binding Id, Converter={StaticResource IdColorConverter},Mode=Default}" HorizontalAlignment="Center" Margin="15.5,4" Grid.RowSpan="3" VerticalAlignment="Stretch" Width="4" StrokeThickness="0"/>
+				<Viewbox x:Name="Name" Grid.Column="1" Grid.RowSpan="5">
+                    <TextBlock Foreground="{Binding Id, Converter={StaticResource NamePortColorConverter}, Mode=Default}" Text="{Binding Name}"/>
+				</Viewbox>
+				<Rectangle Fill="{Binding Id, Converter={StaticResource NamePortColorConverter}, Mode=Default}" HorizontalAlignment="Center" Grid.RowSpan="5" VerticalAlignment="Stretch" Width="4" StrokeThickness="0" RenderTransformOrigin="0.5,0.5" Margin="15.5,0">
+					<Rectangle.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="10"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Rectangle.RenderTransform>
+				</Rectangle>
+				<Viewbox x:Name="Bauds" Grid.Column="2" Grid.ColumnSpan="2" MinWidth="50">
+					<TextBlock Foreground="White" Text="{Binding Baudrate}"/>
+				</Viewbox>
+				<Viewbox HorizontalAlignment="Left" Margin="130,0,0,0" Grid.Column="3" Width="40" Height="20">
+					<Path Fill="#FFFFFFFF" Stretch="Fill">
+						<Path.Data>
+							<PathGeometry Figures="m 971.11963 728.10043 -142.94089 0 c 0 0 -10e-6 -315.78154 -225.84236 -385.98801 -6.43487 -2.00038 -11.80302 36.36635 -31.80302 356.36635 -1.54553 24.72853 -30 60 -100 35 -40 -15 -55.96167 -45.00024 -40 -85 100 -230 133.32963 -315.5107 129.17758 -316.15118 -16.66103 -2.57008 -34.35603 -3.93485 -53.14918 -3.93485 -384.15363 0 -375.21982 399.70769 -375.21982 399.70769 l -26.80141 0 c 0 0 0 -521.35786 419.88884 -521.35786 26.70613 0 61.35848 3.21835 85.10399 6.7362 0.24131 0.0358 -49 120 -49 120 l 55 -140 -20 165 c 0 0 15.51898 -144.63059 16 -144.52563 341.70398 74.5551 359.58627 514.14729 359.58627 514.14729 z" FillRule="NonZero"/>
+						</Path.Data>
+					</Path>
+				</Viewbox>
+				<TextBlock x:Name="Default" Grid.Column="0" Foreground="White" Text="{Binding Id, Converter={StaticResource DefaultConverter}, Mode=Default}" Margin="0,0,0,100" Grid.RowSpan="5" RenderTransformOrigin="0.5,0.5">
+					<TextBlock.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="-80"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</TextBlock.RenderTransform>
+				</TextBlock>
+				
+				<Viewbox x:Name="Parity" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Right">
+					<TextBlock Foreground="White" Text="Parity : "/>
+				</Viewbox>
+				<Viewbox x:Name="parity" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Left">
+					<TextBlock Foreground="White" Text="{Binding Parity}"/>
+				</Viewbox>
+				<Viewbox x:Name="Databits_" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Right" >
+					<TextBlock Foreground="White" Text="Databits : " HorizontalAlignment="Right"/>
+				</Viewbox>				
+				<Viewbox x:Name="databits" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Left">
+					<TextBlock Foreground="White" Text="{Binding Databits}"/>
+				</Viewbox>
+				<Viewbox x:Name="Stopbits" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Right">
+						<TextBlock Foreground="White" Text="Stopbits : "/>
+				</Viewbox>
+				<Viewbox x:Name="stopbits" Grid.Column="3" Grid.Row="3" HorizontalAlignment="Left">
+					<TextBlock Foreground="White" Text="{Binding Stopbit}"/>
+				</Viewbox>
+				<Viewbox x:Name="Handshake" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Right" >
+					<TextBlock Foreground="White" Text="Handshake : " Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="2"/>
+				</Viewbox>
+				<Viewbox x:Name="handshake" Grid.Column="3" Grid.Row="4" HorizontalAlignment="Left">
+					<TextBlock Foreground="White" Text="{Binding Handshake}"/>
+				</Viewbox>
             </Grid>
         </DataTemplate>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -136,31 +141,30 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
-                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" MinHeight="128"/>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" MinHeight="160"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsMouseOver" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.MouseOver.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.MouseOver.Border}"/>
+                                <Setter Property="Background" TargetName="Bd" Value="Transparent"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{Binding Id, Converter={StaticResource NamePortColorConverter}, Mode=Default}"/>
                             </MultiTrigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="Selector.IsSelectionActive" Value="False"/>
                                     <Condition Property="IsSelected" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedInactive.Border}"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{Binding Id, Converter={StaticResource NamePortColorConverter}, Mode=Default}"/>
                             </MultiTrigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="Selector.IsSelectionActive" Value="True"/>
                                     <Condition Property="IsSelected" Value="True"/>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Background}"/>
-                                <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Item.SelectedActive.Border}"/>
+                                <Setter Property="Background" TargetName="Bd" Value="#7F2672EC"/>
+                                <Setter Property="BorderBrush" TargetName="Bd" Value="{Binding Id, Converter={StaticResource NamePortColorConverter}, Mode=Default}"/>
                             </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="TextElement.Foreground" TargetName="Bd" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
@@ -216,8 +220,8 @@
                 <ColumnDefinition Width="0.45*"/>
                 <ColumnDefinition Width="0.04*" MinWidth="50"/>
             </Grid.ColumnDefinitions>
-            <Viewbox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" >
-            	<TextBlock Foreground="{StaticResource White}" Text="{Binding GpsTrame}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Viewbox Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center" >
+            	<TextBlock Foreground="{StaticResource White}" Text="{Binding GpsTrame}"  VerticalAlignment="Top"/>
             </Viewbox>
             <!-- Delete item-->
             <Button Margin="20,0,0,0" Grid.Column="0" Grid.Row="2" Width="60" HorizontalAlignment="Left" Command="{Binding Path=ListBoxDeleteItem}" Background="{DynamicResource Transparent}" >
@@ -236,7 +240,7 @@
                     <Path Fill="{StaticResource White}" Margin="2" Stretch="Uniform" Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z "/>
                 </Viewbox>
             </Button>
-			<ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="#FFECECEC"/>
+			<ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="White"/>
         </Grid>
     </Grid>
 </UserControl>

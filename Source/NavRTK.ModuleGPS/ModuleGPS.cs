@@ -26,8 +26,8 @@ namespace NavRTK.ModuleGPS
             System.Console.WriteLine("ModuleGPSChargé");
 
             regionManager.RegisterViewWithRegion("RootRegion", typeof(NavRTK.ModuleGPS.View.HomeView));
-            regionManager.RegisterViewWithRegion("MainRegion", typeof(NavRTK.ModuleGPS.View.DataParsedView));
             regionManager.RegisterViewWithRegion("MainRegion", typeof(NavRTK.ModuleGPS.View.SettingsView));
+            regionManager.RegisterViewWithRegion("MainRegion", typeof(NavRTK.ModuleGPS.View.DataParsedView));
         }
         #endregion
     }

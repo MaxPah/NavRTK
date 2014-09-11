@@ -190,7 +190,7 @@
                     <TextBlock Foreground="#FFFFFFFF" TextAlignment="Center" Text="Mode :"/>
                 </Viewbox>
             </Grid>
-            <ToggleButton Grid.Row="4" Grid.Column="1" Margin="20,20,20,20" Command="{Binding Path=Stop}" Content="{Binding OnOffButton}" Background="{DynamicResource secondColor}"/>
+            <!--<ToggleButton Grid.Row="4" Grid.Column="1" Margin="20,20,20,20" Command="{Binding Path=Stop}" Content="{Binding OnOffButton}" Background="{DynamicResource secondColor}" Foreground="White"/>-->
             <Viewbox Grid.ColumnSpan="3">
                 <TextBlock Text="{Binding Time}" Foreground="#FFFFFFFF" TextAlignment="Center"/>
             </Viewbox>

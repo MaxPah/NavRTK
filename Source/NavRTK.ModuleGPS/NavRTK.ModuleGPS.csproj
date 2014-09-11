@@ -93,7 +93,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\DefaultColorConverter.cs" />
+    <Compile Include="Converters\DefaultConverter.cs" />
+    <Compile Include="Converters\NamePortColorConverter.cs" />
     <Compile Include="Converters\StatusColorConverter.cs" />
     <Compile Include="Converters\IdColorConverter.cs" />
     <Compile Include="Helper\RelayCommand.cs" />

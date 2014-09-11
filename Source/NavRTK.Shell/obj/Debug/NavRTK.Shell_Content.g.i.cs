@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ports.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("iconnavrtk.png")]
 
 

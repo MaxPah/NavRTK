@@ -593,7 +593,7 @@ namespace NavRTK.ModuleGPS.ViewModel
         public HomeViewModel(IRegionManager RegionManager)
         {
             this.regionManager = RegionManager;
-            link = "../../Ports.xml";
+            link = "Ports.xml";
             portName = SerialPort.GetPortNames();
             gpsTrame = new Queue<string>();
             gpsTrameParsed = new Queue<ObjectGP>();
@@ -625,6 +625,10 @@ namespace NavRTK.ModuleGPS.ViewModel
         private bool CanListBoxDefaultItem() { return true; }
         private void ExecuteListBoxDefaultItem()
         {
+            onOffButton = "Break";
+            OnPropertyChanged("OnOffButton");
+            ExecuteStop();
+
             try
             {
                 int id = -1;
@@ -644,7 +648,7 @@ namespace NavRTK.ModuleGPS.ViewModel
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("ExecuteListBoxDefaultItem : "+e.Message);
             }
 
         }
@@ -749,16 +753,19 @@ namespace NavRTK.ModuleGPS.ViewModel
         public delegate void UpdateUiTextDelegate2(MessageGPRMC objRMC);
         private void Recieve(object sender, SerialDataReceivedEventArgs e)
         {
+            sp.ReadTimeout = 3000;
             try
             {
                 if (sp.IsOpen == true)
                     recieved_data = sp.ReadLine();
-                else Console.WriteLine("sp not open");
             }
-            catch (Exception exp)
+            catch
             {
-                Console.WriteLine(" recieve " + exp.Message);
+                recieved_data = "Recieved data can't be used, please change the serialport by default\n";
+                ExecuteStop();
+                
             }
+            
 
             if (recieved_data != null && !recieved_data.Contains("$GP"))
             {
@@ -821,13 +828,16 @@ namespace NavRTK.ModuleGPS.ViewModel
         public void initSerialPort(ObjectsPorts objports)
         {
             if (objports == null)
+            {
                 return;
+            }
             else
-            { 
+            {
                 foreach (ObjectPort o in objports)
                 {
                     if (o.Id == 0)
                     {
+
                         sp = new SerialPort();
                         sp.PortName = o.Name;
                         sp.BaudRate = int.Parse(o.Baudrate);

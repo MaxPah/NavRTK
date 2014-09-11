@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace NavRTK.ModuleGPS.Converters
 {
-    public class DefaultColorConverter : IValueConverter
+    public class DefaultConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
