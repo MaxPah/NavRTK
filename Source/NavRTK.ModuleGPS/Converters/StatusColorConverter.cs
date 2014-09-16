@@ -4,6 +4,11 @@ using System.Windows.Media;
 
 namespace NavRTK.ModuleGPS.Converters
 {
+    /// <summary>
+    /// This is a converter for the statusbar at the bottom of the app
+    /// if connection ok color will be Green
+    /// else connection color will be Red
+    /// </summary>
     public class StatusColorConverter : IValueConverter
     {
         public enum StatusEnum

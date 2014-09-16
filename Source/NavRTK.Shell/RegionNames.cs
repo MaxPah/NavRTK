@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NavRTK.Shell
 {
+    /// <summary>
+    /// Used to register Regions
+    /// </summary>
     public static class RegionNames
     {
         public const string HeaderRegion = "HeaderRegion";

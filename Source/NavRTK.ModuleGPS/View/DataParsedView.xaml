@@ -2,27 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:converter="clr-namespace:NavRTK.ModuleGPS.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"    
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
     <UserControl.Resources>
+        <!--Converters-->
+        <converter:NSatToColorConverter x:Key="NSatToColorConverter"/>
+        <converter:NSatBackgroundToColorConverter x:Key="NSatBackgroundToColorConverter"/>
+        <!-- Color for the app -->
         <SolidColorBrush x:Key="primaryColor" Color="#292929" />
         <SolidColorBrush x:Key="secondColor" Color="#2672EC" />
         <SolidColorBrush x:Key="menuBisColor" Color="#919191"/>
         <SolidColorBrush x:Key="White" Color="#ffffff"/>
         <SolidColorBrush x:Key="Black" Color="#000000"/>
         <SolidColorBrush x:Key="Transparent" Color="Transparent"/>
-        <Style TargetType="{x:Type ToggleButton}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ToggleButton}">
-                        <Border Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
     </UserControl.Resources>
 
     <Grid Background="{StaticResource primaryColor}" MinWidth="800" MinHeight="500">
@@ -48,6 +42,7 @@
             <Viewbox  Grid.Column="2" Grid.Row="2">
                 <TextBlock Foreground="#FF2672EC" TextAlignment="Center" Text="GPRMC" />
             </Viewbox>
+            
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="5*"/>
@@ -64,50 +59,29 @@
                 <Viewbox Grid.Column="1" Grid.Row="0" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Position}" Foreground="White"/>
                 </Viewbox>
+                <!-- NSat Progressbar-->
                 <Viewbox Grid.Column="1" Grid.Row="2" Margin="5,5,0,5">
-                    <ProgressBar Height="27.19" Width="62.667" Minimum="0" Maximum="10" Value="{Binding NSat}" BorderThickness="0" Margin="0,5,0,0">
-                        <ProgressBar.Style>
-                            <Style TargetType="ProgressBar">
-                                <Setter Property="Foreground" Value="#e50000"/>
-                                <Setter Property="Background" Value="#5b0000"/>
-                                <Style.Triggers>
-                                    <Trigger Property="Value" Value="5">
-                                        <Setter Property="Foreground" Value="#FFA500"/>
-                                        <Setter Property="Background" Value="#664200"/>
-                                    </Trigger>
-                                    <Trigger Property="Value" Value="6">
-                                        <Setter Property="Foreground" Value="#008716"/>
-                                        <Setter Property="Background" Value="#00430b"/>
-                                    </Trigger>
-                                    <Trigger Property="Value" Value="7">
-                                        <Setter Property="Foreground" Value="#008716"/>
-                                        <Setter Property="Background" Value="#00430b"/>
-                                    </Trigger>
-                                    <Trigger Property="Value" Value="8">
-                                        <Setter Property="Foreground" Value="#008716"/>
-                                        <Setter Property="Background" Value="#00430b"/>
-                                    </Trigger>
-                                    <Trigger Property="Value" Value="9">
-                                        <Setter Property="Foreground" Value="#008716"/>
-                                        <Setter Property="Background" Value="#00430b"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ProgressBar.Style>
-                    </ProgressBar>
+                    <ProgressBar Height="27.19" Width="62.667" Minimum="0" Maximum="10" Value="{Binding NSat}" BorderThickness="0" Margin="0,5,0,0"
+                                 Foreground="{Binding NSat, Converter={StaticResource NSatToColorConverter}, Mode=Default}" 
+                                 Background="{Binding NSat, Converter={StaticResource NSatBackgroundToColorConverter}, Mode=Default}" />
                 </Viewbox>
+                <!-- NSat -->
                 <Viewbox Grid.Column="1" Grid.Row="3" Margin="5,5,5,5">
                     <TextBlock Text="{Binding NSat}" TextAlignment="Center" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                 </Viewbox>
+                <!-- Dilution-->
                 <Viewbox Grid.Column="1" Grid.Row="1" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Dilution}" Foreground="White"/>
                 </Viewbox>
+                <!--Altitude-->
                 <Viewbox Grid.Column="4" Grid.Row="1" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Altitude}" Foreground="White"/>
                 </Viewbox>
+                <!--Geoidal-->
                 <Viewbox Grid.Column="4" Grid.Row="0" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Geoidal}" Foreground="White"/>
                 </Viewbox>
+                <!-- Last DGPS capted-->
                 <Viewbox Grid.Column="4" Grid.Row="2" Margin="5,5,5,5">
                     <TextBlock Text="{Binding GGALastDGPS}" Foreground="White"/>
                 </Viewbox>
@@ -149,21 +123,27 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <!-- Validity -->
                 <Viewbox Grid.Column="1" Grid.Row="0" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Validity}" Foreground="White"/>
                 </Viewbox>
+                <!-- SpeedProgressBar-->
                 <Viewbox Grid.Column="4" Margin="5,5,0,5">
                     <ProgressBar Height="27.19" Width="62.667" Background="#FF224174" Foreground="#FF2672EC" Minimum="0" Maximum="150" SmallChange="2" Value="{Binding SpeedBar}" BorderThickness="0" Margin="0,5,0,0" LargeChange="2"/>
                 </Viewbox>
+                <!-- Speed-->
                 <Viewbox Grid.Column="4" Grid.Row="0" Margin="5">
                     <TextBlock Text="{Binding Speed}" Foreground="White"/>
                 </Viewbox>
+                <!--Cap-->
                 <Viewbox Grid.Column="1" Grid.Row="1" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Cap}" Foreground="White"/>
                 </Viewbox>
+                <!-- Magnetic-->
                 <Viewbox Grid.Column="1" Grid.Row="2" Margin="5,5,5,5">
                     <TextBlock Text="{Binding Magnetic}" Foreground="White"/>
                 </Viewbox>
+                <!--Mode pos -->
                 <Viewbox Grid.Column="4" Grid.Row="1" Margin="5,5,5,5">
                     <TextBlock Text="{Binding ModePos}" Foreground="White"/>
                 </Viewbox>
@@ -190,7 +170,6 @@
                     <TextBlock Foreground="#FFFFFFFF" TextAlignment="Center" Text="Mode :"/>
                 </Viewbox>
             </Grid>
-            <!--<ToggleButton Grid.Row="4" Grid.Column="1" Margin="20,20,20,20" Command="{Binding Path=Stop}" Content="{Binding OnOffButton}" Background="{DynamicResource secondColor}" Foreground="White"/>-->
             <Viewbox Grid.ColumnSpan="3">
                 <TextBlock Text="{Binding Time}" Foreground="#FFFFFFFF" TextAlignment="Center"/>
             </Viewbox>
@@ -217,7 +196,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <!-- Latitude Name-->
+                <!-- Longitude Name-->
                 <Viewbox Grid.Column="0">
                     <TextBlock Foreground="#FFFFFFFF" TextAlignment="Center">
                             <Run Text="Longitude :"/>

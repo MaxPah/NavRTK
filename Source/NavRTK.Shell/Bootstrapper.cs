@@ -37,11 +37,8 @@ namespace NavRTK.Shell
         protected override IModuleCatalog CreateModuleCatalog()
         {
             ModuleCatalog moduleCatalog = new ModuleCatalog();
-            // this is the code responsible 
-            // for adding ModuleGPS to the application
-
+            // this is the code responsible for adding ModuleGPS to the application
             moduleCatalog.AddModule(new ModuleInfo { ModuleName = "ModuleGPS" });
-
             return moduleCatalog;
         }
     }

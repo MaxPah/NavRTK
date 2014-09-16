@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NavRTK.ModuleGPS.Model
 {
+    /// <summary>
+    /// This is an enumeration for status bar at the bottom of the application
+    /// </summary>
     public enum StatusEnum
     {
         ConnectionOK,

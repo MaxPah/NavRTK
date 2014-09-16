@@ -21,6 +21,7 @@ namespace NavRTK.ModuleGPS.Model
         }
         #endregion
 
+        #region Method toLatitude
         /// <summary>
         /// Used to initilize latitude from string parameter
         /// </summary>
@@ -51,7 +52,10 @@ namespace NavRTK.ModuleGPS.Model
             }
             else return 0;
         }
+        #endregion Method toLatitude
 
+
+        #region Method toLongitude
         /// <summary>
         /// Used to initilize longitude from string parameter
         /// </summary>
@@ -78,25 +82,7 @@ namespace NavRTK.ModuleGPS.Model
             }
             else return 0;
         }
-
-        /// <summary>
-        /// Used to print every element of the list in function's parameter
-        /// </summary>
-        /// <param name="list">list of Object element (ObjectGPGGA or ObjectGPRMC)</param>
-        public static string printData(List<Object> list)
-        {
-            string message = "";
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (list[i].ToString().Contains("GPGGA"))
-                    message = MessageGPGGA.printGPGGA((MessageGPGGA)list[i]);
-                else if (list[i].ToString().Contains("GPRMC"))
-                    message = MessageGPRMC.printGPRMC((MessageGPRMC)list[i]);
-                else message = "error";
-            }
-
-            return message;
-        }
+        #endregion Method toLongitude
     }
     #endregion
 }

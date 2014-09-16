@@ -112,9 +112,10 @@ namespace NavRTK.ModuleGPS.Model
             else obj.geoUnit = char.Parse(var[12]);
 
             //DIFFERENTIAL TIME
-            if (var[13].Equals(string.Empty))
-                obj.dGPSTime = new DateTime(1,1,1);
-            else obj.dGPSTime = new DateTime(year, month, day, int.Parse(var[13].Substring(0, 2)), int.Parse(var[13].Substring(2, 2)), int.Parse(var[13].Substring(4, 2)), int.Parse(var[13].Substring(7, 3)));
+            if (var[13].Length > 6 ) 
+                obj.dGPSTime = new DateTime(year, month, day, int.Parse(var[13].Substring(0, 2)), int.Parse(var[13].Substring(2, 2)), int.Parse(var[13].Substring(4, 2)), int.Parse(var[13].Substring(7, 3)));
+            else
+                obj.dGPSTime = new DateTime(1, 1, 1);
 
             //STATION VIEWED
             if (var[14].Length > 5)
@@ -130,27 +131,9 @@ namespace NavRTK.ModuleGPS.Model
         }
 
         /// <summary>
-        /// Print informations of an ObjectGPGGA
+        /// Return the type of Trame
         /// </summary>
-        /// <param name="p">Object to string</param>
-        public static string printGPGGA(MessageGPGGA p)
-        {
-            return p.type + " - " +
-                p.timeUTC + " - " +
-                p.latitude + "  - " +
-                p.longitude + " - " +
-                p.gpsQuality + " - " +
-                p.nSat + " - " +
-                p.dilution + " - " +
-                p.altitude + " - " +
-                p.altUnit + " - " +
-                p.geoidal + " - " +
-                p.geoUnit + " - " +
-                p.dGPSTime + " - " +
-                p.stationRef + " - " +
-                p.checksum + "\n";
-
-        }
+        /// <returns></returns>
         public string GetTypeTrame()
         {
             return this.type;

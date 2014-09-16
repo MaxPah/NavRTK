@@ -7,9 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="1024" d:DesignWidth="1280">
     <UserControl.Resources>
+        <!--Converters-->
         <converter:IdColorConverter x:Key="IdColorConverter"/>
         <converter:DefaultConverter x:Key="DefaultConverter"/>
         <converter:NamePortColorConverter x:Key="NamePortColorConverter"/>
+        <!-- Style for button -->
         <Style TargetType="{x:Type Button}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -38,6 +40,7 @@
             </Setter>
         </Style>
         <SolidColorBrush x:Key="secondColor" Color="#2672EC" />
+        <!-- ListPort DataTemplate -->
         <DataTemplate x:Key="DataTemplateListPort">
 			<Grid Background="Transparent">
                 <Grid.ColumnDefinitions>
@@ -122,21 +125,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Item.MouseOver.Background" Color="#1F26A0DA"/>
-        <SolidColorBrush x:Key="Item.MouseOver.Border" Color="#a826A0Da"/>
-        <SolidColorBrush x:Key="Item.SelectedInactive.Background" Color="#3DDADADA"/>
-        <SolidColorBrush x:Key="Item.SelectedInactive.Border" Color="#FFDADADA"/>
-        <SolidColorBrush x:Key="Item.SelectedActive.Background" Color="#3D26A0DA"/>
-        <SolidColorBrush x:Key="Item.SelectedActive.Border" Color="#FF26A0DA"/>
         <Style x:Key="ListBoxItemStyle1" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="Padding" Value="4,1"/>
-            <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-            <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -181,6 +170,7 @@
         <SolidColorBrush x:Key="Transparent" Color="Transparent"/>
     </UserControl.Resources>
      <Grid Background="{DynamicResource primaryColor}">
+         <!-- Popup "new port"-->
         <Popup Placement="Center" Width="Auto" Height="Auto" IsOpen="{Binding IsOpen}" OpacityMask="Black">
             <Grid Background="#dd515151" >
                 <Grid.ColumnDefinitions>
@@ -240,7 +230,7 @@
                     <Path Fill="{StaticResource White}" Margin="2" Stretch="Uniform" Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z "/>
                 </Viewbox>
             </Button>
-			<ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Stop}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="White"/>
+            <ToggleButton Margin="0,10,0,0" Grid.Row="2" Background="{DynamicResource secondColor}" HorizontalAlignment="Right" Content="{Binding OnOffButton}"  Width="82" Command="{Binding Path=Acquisition}" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Foreground="White"/>
         </Grid>
     </Grid>
 </UserControl>

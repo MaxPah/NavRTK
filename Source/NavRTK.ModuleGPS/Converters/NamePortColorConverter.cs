@@ -4,6 +4,11 @@ using System.Windows.Media;
 
 namespace NavRTK.ModuleGPS.Converters
 {
+    /// <summary>
+    /// This is a converter for SerialPort color
+    /// if Id = 0 Color will be White
+    /// else according Id color will be different blue
+    /// </summary>
     class NamePortColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)

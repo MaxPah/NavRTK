@@ -24,16 +24,5 @@ namespace NavRTK.ModuleGPS.Model
         public string Parity { get; set; }
 
         public string Handshake { get; set; }
-
-        public string ToStringComplete()
-        {
-            return Id +
-                " Name: " + Name +
-                " / BaudRate: " + Baudrate +
-                " / Databits: " + Databits +
-                " / Stopbit " + Stopbit +
-                " / Parity: " + Parity +
-                " / Handshake: " + Handshake;
-        }
     }
 }

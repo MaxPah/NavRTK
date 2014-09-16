@@ -9,7 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1200">
     <UserControl.Resources>
+        <!--Converter-->
         <converter:StatusColorConverter x:Key="StatusToColorConverter"/>
+        <!--Style for Buttons to switch view-->
         <Style  TargetType="Button">
             <Setter Property="Template">
                 <Setter.Value>
@@ -34,6 +36,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
+            <!-- MenuTop Bar -->
             <Border Grid.Row="0" Background="#FF242424">
                 <Grid>
                     <Image Grid.Row="0" Source="../IconNavRTK.png" Width="100" Margin="10,10,100,10" HorizontalAlignment="Right"/>
@@ -41,9 +44,11 @@
                     <Button Command="{Binding SwitchToDataParsedView}" Content="GPS View" HorizontalAlignment="Left" Height="38" Margin="140,31,0,31" VerticalAlignment="Center" Width="90" Background="{DynamicResource Transparent}" Foreground="{DynamicResource White}" BorderBrush="{DynamicResource Transparent}" FontSize="16"/>
                 </Grid>
             </Border>
+            <!-- MainRegion-->
             <Border  Grid.Row="1" Background="Transparent">
                 <ContentControl prism:RegionManager.RegionName="MainRegion"/>
             </Border>
+            <!-- StatusBar-->
             <Border Grid.Row="2" Background="#FF242424">
                 <TextBlock Text="{Binding ActualStatus}" Foreground="{Binding ActualStatus, Converter={StaticResource StatusToColorConverter}, Mode=Default}" VerticalAlignment="Bottom" Margin="10,0,0,0" />
             </Border>

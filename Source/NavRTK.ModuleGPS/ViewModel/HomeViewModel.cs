@@ -1,7 +1,6 @@
 ﻿using Microsoft.Practices.Prism.Regions;
 using NavRTK.ModuleGPS.Helper;
 using NavRTK.ModuleGPS.Model;
-using NavRTK.ModuleGPS.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +21,9 @@ namespace NavRTK.ModuleGPS.ViewModel
         readonly IRegionManager regionManager;
 
         #region FIELDS
-        private Queue<string> gpsTrame; // Used to stock ALL trames GPS Message
-        private Queue<ObjectGP> gpsTrameParsed;
-        private string actualStatus = StatusEnum.ConnectionKO.ToString();
+        private Queue<string> gpsTrame; // Used to stock ALL trames GPS (brut)
+        private Queue<ObjectGP> gpsTrameParsed; // Used to stock ALL trames GPS Message (parsed)
+        private string actualStatus = StatusEnum.ConnectionKO.ToString(); // StatusEnum Ok or KO
 
         string recieved_data; // Used to stock one trame of the GPS Message
         private string link; // Used to stock the path for Ports.xml
@@ -46,37 +45,34 @@ namespace NavRTK.ModuleGPS.ViewModel
         private ObjectPort selectedObjectPort;// Used to be the ObjectPort selected for recieved data
         private bool isOpen; // Used to determind if the popup "new port" is hidden or not
 
-        /*** GPS FIELDS ***
-         Used to fill in the elements of the view
-         */
-        //Both GGA & RMC
-        private string time;
-        private string latitude;
-        private string longitude;
+            #region GPS Fields
+            //Both GGA & RMC
+            private string time;
+            private string latitude;
+            private string longitude;
 
-        //GGA
-        private string position;
-        private string quality;
-        private string nSat;
-        private string dilution;
-        private string altitude;
-        private string geoidal;
-        private string GGAlastDGPS;
+            //GGA
+            private string position;
+            private string quality;
+            private string nSat;
+            private string dilution;
+            private string altitude;
+            private string geoidal;
+            private string GGAlastDGPS;
 
-        //RMC
-        private string validity;
-        private string speed;
-        private double speedBar;
-        private string cap;
-        private string magnetic;
-        private string modepos;
-        /*** GPS FIELDS END ***/
+            //RMC
+            private string validity;
+            private string speed;
+            private double speedBar;
+            private string cap;
+            private string magnetic;
+            private string modepos;
+            #endregion GPS Fields
         #endregion FIELDS
 
         #region PROPERTIES
-        /// <summary>
-        /// Determine if the PopUp is open or not
-        /// </summary>
+
+        // IsOpen Determine if popup is open
         public bool IsOpen
         {
             get { return isOpen; }
@@ -87,6 +83,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("IsOpen");
             }
         }
+        // Make available EnumBauds
         public string[] EnumBauds
         {
             get { return enumBauds; }
@@ -97,6 +94,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("EnumBauds");
             }
         }
+        //Make available EnumDatabits
         public string[] EnumDatabits
         {
             get { return enumDatabits; }
@@ -107,6 +105,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("EnumDatabits");
             }
         }
+        //Make available EnumHandshake
         public string[] EnumHandshake
         {
             get { return enumHandshake; }
@@ -117,6 +116,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("EnumHandshake");
             }
         }
+        //Make available EnumParity
         public string[] EnumParity
         {
             get { return enumParity; }
@@ -127,6 +127,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("EnumParity");
             }
         }
+        //Make available EnumStopbit
         public string[] EnumStopbit
         {
             get { return enumStopbit; }
@@ -137,20 +138,20 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("EnumStopbit");
             }
         }
+        // Make available 
         public string OnOffButton
         {
             get
             {
-                ActualStatus = StatusEnum.ConnectionKO.ToString();
-                OnPropertyChanged("ActualStatus");
-                return onOffButton; }
+                return onOffButton;
+            }
             set
             {
-                
                 onOffButton = value;
                 OnPropertyChanged("OnOffButton");
             }
         }
+        // Make available list of serialport name
         public string[] PortName
         {
             get
@@ -164,6 +165,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("PortName");
             }
         }
+        // Make available selected name in popup
         public string SelectedName
         {
             get
@@ -176,6 +178,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("SelectedName");
             }
         }
+        // Make available selected bauds in popup
         public string SelectedBauds
         {
             get
@@ -188,6 +191,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("SelectedBauds");
             }
         }
+        // Make available selected databits in popup
         public string SelectedDatabits
         {
             get
@@ -200,6 +204,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("SelectedDatabits");
             }
         }
+        // Make available selected stopbit in popup
         public string SelectedStopbits
         {
             get
@@ -212,6 +217,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("SelectedStopbits");
             }
         }
+        // Make available selected Parity in popup
         public string SelectedParity
         {
             get
@@ -224,6 +230,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("SelectedParity");
             }
         }
+        // Make available selected Handshake in popup
         public string SelectedHandshake
         {
             get
@@ -236,6 +243,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("SelectedHandshake");
             }
         }
+        // Make available selected port in list
         public ObjectPort SelectedPort
         {
             get { return selectedObjectPort; }
@@ -248,6 +256,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 }
             }
         }
+        // Make available trame gps brut
         public string GpsTrame
         {
             get
@@ -263,6 +272,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("GpsTrame");
             }
         }
+        // Make available the list of all ObjectPort
         public ObjectsPorts ObjPorts
         {
             get
@@ -275,6 +285,7 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("ObjPorts");
             }
         }
+        // Make available the status of the connection
         public string ActualStatus
         {
             get
@@ -285,8 +296,9 @@ namespace NavRTK.ModuleGPS.ViewModel
                 OnPropertyChanged("ActualStatus");
             }
         }
+        
         /// <summary>
-        /// Both
+        /// Both GGA and RMC
         /// </summary>
         #region Get Set Both
         public string Time
@@ -516,16 +528,16 @@ namespace NavRTK.ModuleGPS.ViewModel
         /// <summary>
         /// Stop receiving data
         /// </summary>
-        private RelayCommand stop;
-        public ICommand Stop
+        private RelayCommand acquisition;
+        public ICommand Acquisition
         {
             get
             {
-                if (stop == null)
+                if (acquisition == null)
                 {
-                    stop = new RelayCommand(ExecuteStop, CanStop);
+                    acquisition = new RelayCommand(ExecuteAcquisition, CanAcquisition);
                 }
-                return stop;
+                return acquisition;
             }
         }
 
@@ -561,6 +573,9 @@ namespace NavRTK.ModuleGPS.ViewModel
             }
         }
 
+        /// <summary>
+        /// Switch view to DataParsedView
+        /// </summary>
         private RelayCommand switchToDataParsedView;
         public ICommand SwitchToDataParsedView
         {
@@ -574,6 +589,9 @@ namespace NavRTK.ModuleGPS.ViewModel
             }
         }
         
+        /// <summary>
+        /// Switch view to SettingsView
+        /// </summary>
         private RelayCommand switchToSettingsView;
         public ICommand SwitchToSettingsView
         {
@@ -593,16 +611,20 @@ namespace NavRTK.ModuleGPS.ViewModel
         public HomeViewModel(IRegionManager RegionManager)
         {
             this.regionManager = RegionManager;
-            link = "Ports.xml";
-            portName = SerialPort.GetPortNames();
-            gpsTrame = new Queue<string>();
+            link = "Ports.xml"; //file where ObjectPort will be saved or  will be load
+            portName = SerialPort.GetPortNames(); //recover the list  of port name available
+            gpsTrame = new Queue<string>(); 
             gpsTrameParsed = new Queue<ObjectGP>();
             XMLtoSerialPort();
         }
         #endregion CONSTRUCTOR
 
         #region COMMANDS IMPLEMENTATION
-        private bool CanListBoxDeleteItem() { return true; }
+        private bool CanListBoxDeleteItem() 
+        {
+            return true;
+        }
+        //Remove the ObjectPort according to selected port
         private void ExecuteListBoxDeleteItem()
         {
             int id = -1;
@@ -617,17 +639,21 @@ namespace NavRTK.ModuleGPS.ViewModel
                     break;
                 }
             }
-            objports.Enregistrer(link);
+            objports.SavePort(link);
             XMLtoSerialPort();
             OnPropertyChanged("ObjPorts");
             OnPropertyChanged("ListBoxDeleteItem");
         }
-        private bool CanListBoxDefaultItem() { return true; }
+        private bool CanListBoxDefaultItem()
+        {
+            return true;
+        }
+        //Swap the OnOffButton to Break, stop the connection and swap current id
         private void ExecuteListBoxDefaultItem()
         {
             onOffButton = "Break";
             OnPropertyChanged("OnOffButton");
-            ExecuteStop();
+            ExecuteAcquisition();
 
             try
             {
@@ -638,11 +664,11 @@ namespace NavRTK.ModuleGPS.ViewModel
 
                 if (File.Exists(link))
                 {
-                    objports = ObjectsPorts.Charger(link);
+                    objports = ObjectsPorts.LoadPort(link);
                 }
                 objports.DefaultSwap(id);
 
-                objports.Enregistrer(link);
+                objports.SavePort(link);
                 XMLtoSerialPort();
                 OnPropertyChanged("ObjPorts");
             }
@@ -654,6 +680,7 @@ namespace NavRTK.ModuleGPS.ViewModel
         }
         private bool CanValidationNewPort()
         { return true; }
+        // Add a new port in ObjectsPorts
         private void ExecuteValidationNewPort()
         {
             isOpen = false;
@@ -661,7 +688,7 @@ namespace NavRTK.ModuleGPS.ViewModel
 
             if (File.Exists(link))
             {
-                objports = ObjectsPorts.Charger(link);
+                objports = ObjectsPorts.LoadPort(link);
             }
             else
             {
@@ -681,16 +708,25 @@ namespace NavRTK.ModuleGPS.ViewModel
             };
 
             objports.Add(obj);
-            objports.Enregistrer(link);
+            objports.SavePort(link);
 
             OnPropertyChanged("ObjPorts");
         }
-        private void ExecuteStop()
+        private bool CanAcquisition()
+        {
+            return true;
+        }
+        // Method who use SerialDataReceivedEventHandler to Recieve data from SerialPort
+        private void ExecuteAcquisition()
         {
             if (onOffButton == "Break")
             {
                 sp.Close();
+
+                ActualStatus = StatusEnum.ConnectionKO.ToString();
+                OnPropertyChanged("ActualStatus");
                 onOffButton = "Read";
+                OnPropertyChanged("OnOffButton");
             }
             else
             {
@@ -703,20 +739,18 @@ namespace NavRTK.ModuleGPS.ViewModel
                 //Sets button State and Creates function call on data recieved
                 if (objports.Count > 0 && sp != null)
                 {
-                    sp.DataReceived += new SerialDataReceivedEventHandler(Recieve);
-                    onOffButton = "Break";
+                   sp.DataReceived += new SerialDataReceivedEventHandler(Recieve);
+                   onOffButton = "Break";
+                   OnPropertyChanged("OnOffButton");
+
                     if (!sp.IsOpen)
                         sp.Open();
                 }
             }
-            OnPropertyChanged("OnOffButton");
-        }
-        private bool CanStop()
-        {
-            return true;
         }
         private bool CanOpenPopUp()
         { return true; }
+        // Open the "new port popup"
         private void ExecuteOpenPopUp()
         {
             isOpen = true;
@@ -724,6 +758,7 @@ namespace NavRTK.ModuleGPS.ViewModel
         }
         private bool CanClosePopUp()
         { return true; }
+        // Close the "new port popup"
         private void ExecuteClosePopUp()
         {
             isOpen = false;
@@ -733,14 +768,16 @@ namespace NavRTK.ModuleGPS.ViewModel
         {
             return true;
         }
-        private bool CanSwitchToSettingsView()
-        {
-            return true;
-        }
+        // Switch to Settings View
         private void ExecuteSwitchToSettingsView()
         {
             regionManager.RequestNavigate("MainRegion", new Uri("SettingsView", UriKind.Relative));
         }
+        private bool CanSwitchToSettingsView()
+        {
+            return true;
+        }
+        //Switch to DataParsed View
         private void ExecuteSwitchToDataParsedView()
         {
             regionManager.RequestNavigate("MainRegion",new Uri("DataParsedView",UriKind.Relative));
@@ -748,9 +785,17 @@ namespace NavRTK.ModuleGPS.ViewModel
         #endregion
 
         #region RECIEVING
-
         public delegate void UpdateUiTextDelegate1(MessageGPGGA objGGA);
         public delegate void UpdateUiTextDelegate2(MessageGPRMC objRMC);
+        /// <summary>
+        /// Read the serialport line by line
+        /// according to the data if OK => Parse to MessageGPGGA or MessageGPRMC
+        /// else recieved_data is set to default
+        /// 
+        /// On the other hand if queue.Length = is too long => dequeue 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Recieve(object sender, SerialDataReceivedEventArgs e)
         {
             sp.ReadTimeout = 3000;
@@ -762,8 +807,7 @@ namespace NavRTK.ModuleGPS.ViewModel
             catch
             {
                 recieved_data = "Recieved data can't be used, please change the serialport by default\n";
-                ExecuteStop();
-                
+                ExecuteAcquisition();  
             }
             
 
@@ -807,17 +851,20 @@ namespace NavRTK.ModuleGPS.ViewModel
         #endregion RECIEVING
 
         #region METHODS
+        /// <summary>
+        /// Load into queue all SerialPort of the XML file
+        /// </summary>
         public void XMLtoSerialPort()
         {
             if (File.Exists(link))
             {
-                objports = ObjectsPorts.Charger(link);
+                objports = ObjectsPorts.LoadPort(link);
             }
             else
             {
                 objports = new ObjectsPorts();
             }
-            objports.Enregistrer(link);
+            objports.SavePort(link);
             OnPropertyChanged("ObjPorts");
         }
 
@@ -929,6 +976,7 @@ namespace NavRTK.ModuleGPS.ViewModel
             OnPropertyChanged("GGALastDGPS");
 
         }
+
         /// <summary>
         /// Used to load RMC fields
         /// </summary>
@@ -938,11 +986,11 @@ namespace NavRTK.ModuleGPS.ViewModel
             validity = objRMC.status.ToString();
             OnPropertyChanged("Validity");
 
-            /*PREVISIONNEL*/
             speed = objRMC.speed.ToString();
             OnPropertyChanged("Speed");
-
-            speedBar = double.Parse(speed) * 1000;
+            
+            /*PREVISIONNEL*/
+            speedBar = double.Parse(speed);
             OnPropertyChanged("SpeedBar");
 
             cap = objRMC.cap.ToString();

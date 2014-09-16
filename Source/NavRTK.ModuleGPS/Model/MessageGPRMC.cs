@@ -114,24 +114,5 @@ namespace NavRTK.ModuleGPS.Model
 
             return obj;
         }
-
-        /// <summary>
-        /// Print informations of an ObjectGPGGA
-        /// </summary>
-        /// <param name="p">Object to string</param>
-        public static string printGPRMC(MessageGPRMC p)
-        {
-            return p.type + "  -  " +
-                p.timeUTC + "  -  " +
-                p.status + "  -  " +
-                p.latitude + "  -  " +
-                p.longitude + "  -  " +
-                p.speed + "(knots)  -  " +
-                p.cap + "  -  " +
-                p.date + "  -  " +
-                p.magnetic + "  -  " +
-                p.integrity + "  -  " +
-                p.checksum + "\n";
-        }
     }
 }

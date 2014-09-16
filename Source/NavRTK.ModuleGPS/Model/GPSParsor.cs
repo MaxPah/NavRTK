@@ -21,7 +21,6 @@ namespace NavRTK.ModuleGPS.Model
             {
                 checksum ^= Convert.ToByte(trame[i]);
             }
-
             try
             {
                 if (trame.Length != 0)
@@ -33,7 +32,8 @@ namespace NavRTK.ModuleGPS.Model
 
                 Output = int.Parse(Checksum, System.Globalization.NumberStyles.HexNumber);
             }
-            catch { Output = 00;
+            catch 
+            { Output = 00;
             }
 
            /// Returns

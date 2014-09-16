@@ -16,6 +16,9 @@ namespace NavRTK.ModuleGPS.View
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Initilize the data context of HomeView
+        /// </summary>
         [Import]
         HomeViewModel viewmodel
         {

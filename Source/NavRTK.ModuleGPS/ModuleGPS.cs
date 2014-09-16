@@ -18,13 +18,14 @@ namespace NavRTK.ModuleGPS
     [ModuleExport(typeof(ModuleGPS))]
     class ModuleGPS : IModule
     {
-       
         #region Constructor
+        /// <summary>
+        /// Initialize the GPS module and reference the different regions
+        /// </summary>
         public void Initialize()
         {
             IRegionManager regionManager = (IRegionManager)ServiceLocator.Current.GetInstance(typeof(IRegionManager));
-            System.Console.WriteLine("ModuleGPSChargé");
-
+            
             regionManager.RegisterViewWithRegion("RootRegion", typeof(NavRTK.ModuleGPS.View.HomeView));
             regionManager.RegisterViewWithRegion("MainRegion", typeof(NavRTK.ModuleGPS.View.SettingsView));
             regionManager.RegisterViewWithRegion("MainRegion", typeof(NavRTK.ModuleGPS.View.DataParsedView));
