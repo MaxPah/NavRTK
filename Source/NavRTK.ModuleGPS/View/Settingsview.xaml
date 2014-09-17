@@ -8,7 +8,6 @@
              d:DesignHeight="1024" d:DesignWidth="1280">
     <UserControl.Resources>
         <!--Converters-->
-        <converter:IdColorConverter x:Key="IdColorConverter"/>
         <converter:DefaultConverter x:Key="DefaultConverter"/>
         <converter:NamePortColorConverter x:Key="NamePortColorConverter"/>
         <!-- Style for button -->

@@ -13,7 +13,10 @@ namespace NavRTK.ModuleGPS.Converters
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            int state = int.Parse(value.ToString());
+            int state;
+            if(value != null)
+                state = int.Parse(value.ToString());
+            else state = 1;
 
             if (state == 0)              
                 return new SolidColorBrush(Colors.White);

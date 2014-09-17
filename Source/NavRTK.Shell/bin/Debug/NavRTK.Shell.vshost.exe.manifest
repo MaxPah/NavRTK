@@ -139,26 +139,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NavRTK.ModuleGPS.dll" size="68608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NavRTK.ModuleGPS.dll" size="68096">
       <assemblyIdentity name="NavRTK.ModuleGPS" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yVN/QXrUflrL9w91G+NmtkhJdc6GS2YNHKi2YEzP7LA=</dsig:DigestValue>
+        <dsig:DigestValue>YThKPRndLTrEvJfF5DNjUoUWDeaS3OFtQTmAj3r4qoY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NavRTK.Shell.exe" size="48128">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NavRTK.Shell.exe" size="48640">
       <assemblyIdentity name="NavRTK.Shell" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>+K5pIXGchXyDw0lB+dwqmyVjGxa1GXxH5hjIWfTnqR4=</dsig:DigestValue>
+        <dsig:DigestValue>oZFRYsS0qtnd1pXS8U6xnbHFKmaOc+GDTdJWuhSxx7Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
